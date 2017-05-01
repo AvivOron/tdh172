@@ -26,7 +26,7 @@ soup = bs.BeautifulSoup(sauce, "lxml")
 ps = soup.find_all(attrs={"class":"a3"})
 
 #dictionary for braille
-dict = {'א':"⠁"}
+dict = {'א':'⠁'}
 
 #cleaning NIKUD!
 i=0
@@ -37,7 +37,12 @@ for p in ps:
             del(string[i])
         i+=1
 
-#writing into file
-i=0
-with open("text.txt", "w") as f:
-        f.write(str(ord(dict['א'])))
+braileList = []
+for char in string:
+    braileList[char] = dict[char]
+
+#writing into file (hallelujah!!! took me a lot of time to figure out the encoding...\=)
+
+with open("text.txt", "w",encoding='utf-8') as f:
+    f.write(''.join(braileList))
+    #print(dict['א'])
