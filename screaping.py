@@ -24,6 +24,8 @@ sauce = urllib.request.urlopen(newlink).read()
 soup = bs.BeautifulSoup(sauce, "lxml")
 #find lines of the song
 ps = soup.find_all(attrs={"class":"a3"})
+
+#dictionary for braille
 dict = {'א':"⠁"}
 
 #cleaning NIKUD!
