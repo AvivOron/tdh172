@@ -5,16 +5,22 @@ import bs4 as bs
 import urllib.request
 import sys
 
+#checked with args
+print (sys.argv[1])
+author = sys.argv[1]
+
 #opening url, making soup with bs4 - (poet should be received from user)
-sauce = urllib.request.urlopen('http://benyehuda.org/bialik/').read()
+sauce = urllib.request.urlopen('http://benyehuda.org/' + author).read()
 soup = bs.BeautifulSoup(sauce, "lxml")
+
 
 #find requested song - (name should be received from user)
 a = soup.find("a",text = "אל הצפור")
 
 
 #creating inner link for the song
-newlink = 'http://benyehuda.org/bialik/' + a['href']
+newlink = 'http://benyehuda.org/' + author + "/" + a['href']
+print(newlink)
 
 #TEST:
 #print(newlink)
@@ -29,7 +35,7 @@ ps = soup.find_all(attrs={"class":"a3"})
 dict = {'א':'⠁','ב':'⠃','ג':'⠛','ד':'⠙','ה':'⠓','ו':'⠺','ז':'⠵',\
         'ח':'⠭','ט':'⠞','י':'⠚','כ':'⠅','ל':'⠇','מ':'⠍','נ':'⠝',\
         'ס':'⠎','ע':'⠫','פ':'⠏','צ':'⠮','ק':'⠟','ר':'⠗','ש':'⠩','ת':'⠹',\
-        ' ':' ','\r':'\r',}
+        ' ':' ','\r':'\r','ם':'⠍','ן':'⠝'}
 
 #cleaning NIKUD!
 i=0
