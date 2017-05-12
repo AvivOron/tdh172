@@ -7,6 +7,8 @@ import re
 import linecache
 import os
 import unicodedata
+import MySQLdb
+
 
 dict = {'א':'⠁','ב':'⠃','ג':'⠛','ד':'⠙','ה':'⠓','ו':'⠺','ז':'⠵',\
     'ח':'⠭','ט':'⠞','י':'⠚','כ':'⠅','ך':'⠅','ל':'⠇','מ':'⠍','נ':'⠝',\
@@ -50,6 +52,9 @@ def cleanSpecialCharsFromString(str):
 sauce = urllib.request.urlopen('http://benyehuda.org/').read()
 soup = bs.BeautifulSoup(sauce, "lxml")
 
+myDB = MySQLdb.connect(host="tdh.cmq2zbutzn8e.us-west-2.rds.amazonaws.com",port=3306,user="bialik",passwd="12345678",db="tdh172",charset='utf8')
+cHandler = myDB.cursor()
+
 pattern = re.compile(r'כל השירה') #poetry section only
 poetry = soup.find(text=pattern)
 poetryCellInTable = poetry.parent.parent.parent #go to poetry html object
@@ -69,6 +74,13 @@ for artistLink in artistsLinks:
 				parsedName = parsedName + ' ' + l
 		parsedName = parsedName.strip()
 
+		
+		cHandler.execute("INSERT INTO poets ( name ) VALUES ( %s ); ", [parsedName])
+		myDB.commit()
+		cHandler.execute("SELECT LAST_INSERT_ID();")
+		poetID = cHandler.fetchall()[0][0]
+	
+
 		sauce = urllib.request.urlopen(link).read()
 		soup = bs.BeautifulSoup(sauce, "lxml")
 		songs = soup.find_all("a")
@@ -83,9 +95,10 @@ for artistLink in artistsLinks:
 
 					sauce1 = urllib.request.urlopen(link + songLink).read()
 					soup1 = bs.BeautifulSoup(sauce1, "lxml")
-					ps = soup1.findAll(True, {'class':['a2', 'a3', 'a4', 'a4', 'a5', 'a6', 'a7', 'a8']})
+					ps = soup1.findAll(True, {'class':['a','a1','a2','a3','a4','a5','a6','a7','a8','a9','MsoNormal']})
 
 					translatedString = ""
+					originalString = ""
 					for p in ps:
 						try:
 							string = list(cleanNikudFromString(p.text))
@@ -94,24 +107,35 @@ for artistLink in artistsLinks:
 							for char in string:
 								braileList = [dict[char]] + braileList #inserts word in the right order (append insert it in the wrong order)
 							translatedString += ''.join(braileList) + "\n"
+							originalString += cleanSpecialCharsFromString(p.text) + "\n"
 						except:
 							pass
 
-					if(len(translatedString.split('\n')) > 5): #sanity
-
+					if(len(translatedString.split('\n')) > 5 and len(originalString) < 10000): #sanity
 						path = str(formattedArtistName + "/" + formattedSongName + ".txt")
 						os.makedirs(os.path.dirname(path), exist_ok=True)
 						with open(path, "w",encoding='utf-8') as songFile:
 						    songFile.write(translatedString)
 
+						try:
+							input = [formattedSongName, originalString, translatedString, poetID]
+							cHandler.execute('''INSERT INTO poems ( name, original_data, translated_data, poet_id ) VALUES ( %s, %s, %s, %s); ''', input)
+							myDB.commit()
+						except:
+							myDB.rollback()
+							print ('Error on line {}'.format(sys.exc_info()[-1].tb_lineno))
+							break
+
 			except Exception as e: 
-				print ("couldnt open " + songName + " " + str(e))
-				print ('Error on line {}'.format(sys.exc_info()[-1].tb_lineno))
-				pass
-					
+					print ("couldnt open " + songName + " " + str(e))
+					print ('Error on line {}'.format(sys.exc_info()[-1].tb_lineno))
+					pass
+		
 
 
 	except Exception as e: 
 		print ("couldnt open " + str(englishName) + " " + str(e))
 		print ('Error on line {}'.format(sys.exc_info()[-1].tb_lineno))
 		break
+
+myDB.close()

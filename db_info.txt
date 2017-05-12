@@ -1,0 +1,13 @@
+download Microsoft Visual C++ 14.0
+http://landinghub.visualstudio.com/visual-cpp-build-tools
+
+install MySQL library for python 
+http://stackoverflow.com/questions/26866147/mysql-python-install-fatal-error
+
+download mysql workbench
+https://dev.mysql.com/downloads/workbench/
+
+endpoint: tdh.cmq2zbutzn8e.us-west-2.rds.amazonaws.com:3306
+dbname: tdh172
+username: bialik
+password: 12345678
