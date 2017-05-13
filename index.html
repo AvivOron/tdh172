@@ -76,6 +76,7 @@
     </div>
 
     <div id="poem" style="white-space: pre-wrap;">
+    <td></td><td><div id="braileText"></div></td>
     </div>
 
   </div>
@@ -95,7 +96,7 @@
         url: "./php/getpoem.php",
         data:{ poemID: poem_id }, 
         success: function(data){ 
-          var a = "<a href=''>הדפס</a> \\ <a href=''>שמור כקובץ</a> \\ <a href=''>שלח במייל</a><br><br><br>";
+          var a = "<a href='javascript:printBraileText();'>הדפס</a> \\ <a href='javascript:download();'>שמור כקובץ</a> \\ <a href=''>שלח במייל</a><br><br><br>";
           document.getElementById("poem").innerHTML = a + data;
           document.getElementById("spinner").style.visibility = "hidden";
           document.getElementById("poets").disabled = false;
@@ -146,6 +147,24 @@
   }
 
   window.onload = fetchPoets;
+
+
+  function printBraileText() {
+        childWindow = window.open('','childWindow','location=yes, menubar=yes, toolbar=yes');
+        childWindow.document.open();
+        childWindow.document.write('<html><head></head><body>');
+        childWindow.document.write(document.getElementById('braileText').innerHTML.replace(/\n/gi,'<br>'));
+        childWindow.document.write('</body></html>');
+        childWindow.print();
+        childWindow.document.close();
+        childWindow.close();
+      }
+
+  function download() {
+        var content = document.getElementById('braileText').innerHTML;
+        var uriContent = "data:application/octet-stream," + encodeURIComponent(content);
+        var newWindow = window.open(uriContent, 'neuesDokument');  
+  }
 </script>
 
 
