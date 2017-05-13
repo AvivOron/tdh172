@@ -11,3 +11,10 @@ endpoint: tdh.cmq2zbutzn8e.us-west-2.rds.amazonaws.com:3306
 dbname: tdh172
 username: bialik
 password: 12345678
+
+
+install php
+https://php.iis.net/
+
+instal iis
+create web site on iis

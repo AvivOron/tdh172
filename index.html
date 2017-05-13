@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>שירה עברית בברייל</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="stylesheet.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default rounded borders and increase the bottom margin */ 
+    .navbar {
+      margin-bottom: 50px;
+      border-radius: 0;
+    }
+    
+    /* Remove the jumbotron's default bottom margin */ 
+    .jumbotron {
+      margin-bottom: 0;
+    }
+
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+  </style>
+</head>
+<body dir="rtl    ">
+
+  <div class="jumbotron">
+    <div class="container text-center">
+      <h1>שירה עברית בברייל</h1>      
+      <p>מייקי נגלר, איילת קלדרון ואביב אורון</p>
+    </div>
+  </div>
+
+  <nav class="navbar navbar-inverse" >
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#">חיפוש עפ"י שם השיר</a></li> 
+          <li><a href="#">חיפוש עפ"י משורר</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div dir="rtl" style="margin-right:20px">
+    <table>
+      <tr id="poetsList">
+        <select id="poets" disabled="true" style="visibility: hidden;">
+          <option value="">Loading</option>
+        </select>
+      </tr> 
+      <tr id="poemsList" style="height:40px">
+        <select id="poems" style="visibility:hidden;">
+          <option value="">Loading</option>
+        </select>
+      </tr>
+    </table>
+
+    <br>
+    <div id="spinner" style="visibility: hidden" class="container" >
+      <div class="loader" style="height:20px;width:20px;"></div>
+    </div>
+
+    <div id="poem" style="white-space: pre-wrap;">
+    </div>
+
+  </div>
+
+
+
+
+
+  <script>
+
+    function fetchPoem(poem_id) {
+      document.getElementById("spinner").style.visibility = "visible";
+      document.getElementById("poem").innerHTML = "";
+
+      $.ajax({
+        type: "POST",
+        url: "./php/getpoem.php",
+        data:{ poemID: poem_id }, 
+        success: function(data){ 
+          var a = "<a href=''>הדפס</a> \\ <a href=''>שמור כקובץ</a> \\ <a href=''>שלח במייל</a><br><br><br>";
+          document.getElementById("poem").innerHTML = a + data;
+          document.getElementById("spinner").style.visibility = "hidden";
+          document.getElementById("poets").disabled = false;
+          document.getElementById("poems").disabled = false; 
+
+        }
+      })
+    }
+
+    function fetchPoems(poet_id) {
+      document.getElementById("poem").innerHTML = ""; 
+      document.getElementById("spinner").style.visibility = "visible";
+
+      document.getElementById("poets").disabled = true;
+      document.getElementById("poems").disabled = true; 
+
+      $.ajax({
+        type: "POST",
+        url: "./php/getpoems.php",
+        data:{ poetID: poet_id }, 
+        success: function(data){
+          document.getElementById("poemsList").innerHTML = data;
+          document.getElementById("spinner").style.visibility = "hidden";
+        }
+      })
+    }
+
+    function fetchPoets() {
+      document.getElementById("spinner").style.visibility = "visible";
+
+    //above (HotelArea) are actually the value (this.value) in the form which will be what the user select (North, South, East or West)
+    var xhttp = new XMLHttpRequest();
+    var url = "./php/getpoets.php";//<- just a sample url
+    var data = new FormData();
+    //below will "assign HotelArea to $_POST['SearchValue']"
+    //data.append('SearchValue',HotelArea);
+    xhttp.open('POST',url,true);
+    xhttp.setRequestHeader("Content-Type", "text/plain;charset=UTF-8"); 
+    xhttp.send(data);
+    
+    xhttp.onreadystatechange = function() { 
+      if(xhttp.readyState == 4 && xhttp.status == 200) {  
+        document.getElementById("poetsList").innerHTML = xhttp.responseText;
+        document.getElementById("spinner").style.visibility = "hidden";
+
+      }       
+    }   
+  }
+
+  window.onload = fetchPoets;
+</script>
+
+
+
+
+<br><br>
+
+
+</body>
+</html>
