@@ -3,7 +3,6 @@ $servername = "tdh.cmq2zbutzn8e.us-west-2.rds.amazonaws.com";
 $username = "bialik";
 $password = "12345678";
 $dbname = "tdh172";
-
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -23,7 +22,7 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     // output data of each row
-    echo "<td width=80>בחר משורר:</td><td>";
+    echo "<td width=90>בחירת משורר:</td><td>";
     echo "<select id='poets' onchange='fetchPoems(this.value)'>";
     echo "<option>בחר משורר</option>";
 

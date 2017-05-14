@@ -30,7 +30,7 @@ if ($result->num_rows > 0) {
 
     while($row = mysqli_fetch_array($result))
     { 
-    echo "<td>" . $row['original_data'] . "</td>";
+    echo "<td><div id='originalText'>" . $row['original_data'] . "</div></td>";
     echo "<td><div id='braileText'>" . $row['translated_data'] . "</div></td>";
 
     }
