@@ -26,7 +26,7 @@ if ($result->num_rows > 0) {
     // output data of each row
 
     echo "<td width=80>בחר שיר:</td><td>";
-    echo "<select id='poems' onchange='fetchPoem(this.value)'>";
+    echo "<select id='poems' onchange='fetchPoem(this.value, this.options[this.selectedIndex].innerHTML)'>";
     echo "<option>בחר שיר</option>";
 
     while($row = mysqli_fetch_array($result))

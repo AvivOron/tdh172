@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 $servername = "tdh.cmq2zbutzn8e.us-west-2.rds.amazonaws.com";
 $username = "bialik";
 $password = "12345678";
@@ -11,7 +11,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
       printf("Error loading character set utf8: %s\n", $conn->error);
   } else {
   }
-
+  
 
 // Check connection
 if ($conn->connect_error) {

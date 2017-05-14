@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style=" overflow-y: scroll; ">
 <head>
   <title>שירה עברית בברייל</title>
   <meta charset="utf-8">
@@ -47,25 +47,34 @@
         </button>
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
-
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#">חיפוש עפ"י שם השיר</a></li> 
-          <li><a href="#">חיפוש עפ"י משורר</a></li>
+          <li><a data-toggle="tab" href="#menu2">חיפוש עפ"י שם השיר</a></li> 
+          <li><a data-toggle="tab" href="#menu1">חיפוש עפ"י משורר</a></li>
+          <li class="active"><a data-toggle="tab" href="#home">דף הבית</a></li>    
         </ul>
       </div>
     </div>
   </nav>
 
-  <div dir="rtl" style="margin-right:20px">
+<div class="tab-content">
+  <div dir="rtl" align="center" style="margin-right:20px" id="home" class="tab-pane fade in active" >
+  כחלק מהקורס בו אנו לוקחים חלק, "מדעי הרוח הדיגיטליים" באוניברסיטת בן-גוריון בנגב,<br>
+  בחרנו לממש פרוייקט אשר ינגיש לקהילת העיוורים וכבדי הראייה בישראל את מאגר<br>
+  השירה העברית של פרוייקט <a href="http://benyehuda.org/">בן-יהודה</a> בתרגום לכתב ברייל.<br><br>
+  <b>אנו מקווים כי בפרוייקט זה, הקלנו במידה מסויימת על האתגרים היום יומיים של קהילת העיוורים וכבדי הראייה בישראל.<br><br><br><br><br></b>
+  <small>תודה לפרוייקט <a href="http://benyehuda.org/">בן יהודה</a> אשר המיר את התכנים לפורמט דיגיטלי ואיפשר לנו לממש פרוייקט זה.</small>
+  </div>
+
+  <div dir="rtl" style="margin-right:20px" id="menu1" class="tab-pane fade">
     <table>
       <tr id="poetsList">
-        <select id="poets" disabled="true" style="visibility: hidden;">
-          <option value="">Loading</option>
-        </select>
+        <div id="poets" disabled="true" style="visibility: hidden;">
+          
+        </div>
       </tr> 
       <tr id="poemsList" style="height:40px">
-        <select id="poems" style="visibility:hidden;">
-          <option value="">Loading</option>
+        <div id="poems" style="visibility:hidden;">
+        
         </select>
       </tr>
     </table>
@@ -83,11 +92,32 @@
 
 
 
+    <div dir="rtl" style="margin-right:20px" id="menu2" class="tab-pane fade">
+        בפיתוח
+
+     </div>
+     </div>
+
+  <div style="visibility: hidden" id="poemName"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   <script>
 
-    function fetchPoem(poem_id) {
+    function fetchPoem(poem_id, poem_name) {
+      document.getElementById("poemName").innerHTML = poem_name;
       document.getElementById("spinner").style.visibility = "visible";
       document.getElementById("poem").innerHTML = "";
 
@@ -96,7 +126,7 @@
         url: "./php/getpoem.php",
         data:{ poemID: poem_id }, 
         success: function(data){ 
-          var a = "<a href='javascript:printBraileText();'>הדפס</a> \\ <a href='javascript:download();'>שמור כקובץ</a> \\ <a href=''>שלח במייל</a><br><br><br>";
+          var a = "<a href='javascript:printBraileText();'>הדפס</a> \\ <a href='javascript:makeTextFile();'>שמור כקובץ</a> \\ <a href=''>שלח במייל</a><br><br><br>";
           document.getElementById("poem").innerHTML = a + data;
           document.getElementById("spinner").style.visibility = "hidden";
           document.getElementById("poets").disabled = false;
@@ -162,9 +192,41 @@
 
   function download() {
         var content = document.getElementById('braileText').innerHTML;
-        var uriContent = "data:application/octet-stream," + encodeURIComponent(content);
-        var newWindow = window.open(uriContent, 'neuesDokument');  
+        
+        var blob = new Blob([content]);
+        var evt = document.createEvent("HTMLEvents");
+        evt.initEvent("click");
+        $("<a>", {
+          download: "song.txt",
+          href: url.createObjectURL(blob)
+        }).get(0).dispatchEvent(evt);
+      
   }
+
+function makeTextFile() {
+
+data = new Blob([
+  new Uint8Array([0xEF, 0xBB, 0xBF]), // UTF-8 BOM
+  document.getElementById('braileText').innerHTML.replace(/\n/g, "\r\n")
+
+  ],
+  { type: "text/plain;charset=utf-8" });
+
+
+
+ var a = document.createElement("a"),
+                url = URL.createObjectURL(data);
+        a.href = url;
+        a.download = document.getElementById("poemName").innerHTML + ".txt";
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(function() {
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);  
+        }, 0); 
+      }
+
+
 </script>
 
 
