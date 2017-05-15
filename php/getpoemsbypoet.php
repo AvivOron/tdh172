@@ -1,6 +1,4 @@
 ﻿<?php
-
-
 $servername = "tdh.cmq2zbutzn8e.us-west-2.rds.amazonaws.com";
 $username = "bialik";
 $password = "12345678";
@@ -20,7 +18,8 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
-$sql = "SELECT * FROM poems";
+$poetID = $_POST["poetID"];
+$sql = "SELECT * FROM poems where poet_id = '$poetID'";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -33,7 +32,7 @@ if ($result->num_rows > 0) {
     { 
                       echo "<tr>";
                       echo "<td>";
-                      echo "<a href='javascript:fetchPoemTab2(". $row['id'] . ",\"" . $row['name'] . "\");'>" . $row['name'] . "</a>";
+                      echo "<a href='javascript:fetchPoem(". $row['id'] . ",\"" . $row['name'] . "\");'>" . $row['name'] . "</a>";
                       echo "</td>";
                       echo "</tr>";
     }

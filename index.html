@@ -7,7 +7,10 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="stylesheet.css">
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <style>
     /* Remove the navbar's default rounded borders and increase the bottom margin */ 
@@ -31,157 +34,465 @@
 <body dir="rtl">
 
   <div class="jumbotron" style="background-image: url('brimg2.jpg');background-size:     cover;                      /* <------ */
-    background-repeat:   no-repeat;
-    background-position: center center;">
-    <div class="container text-center">
-      <h1>שירה עברית בברייל</h1>      
-      <p>מייקי נגלר, איילת קלדרון ואביב אורון</p>
-    </div>
+  background-repeat:   no-repeat;
+  background-position: center center;">
+  <div class="container text-center">
+    <h1>שירה עברית בברייל</h1>      
+    <p>מייקי נגלר, איילת קלדרון ואביב אורון</p>
   </div>
+</div>
 
-  <nav class="navbar navbar-inverse" >
-    <div class="container-fluid" style="margin-right:-40px">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>                        
-        </button>
-      </div>
-      <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav navbar-right">
-                  <li class="active" style="float:right"><a data-toggle="tab" href="#home">דף הבית</a></li>  
-                            <li style="float:right"><a data-toggle="tab" href="#menu1">חיפוש עפ"י משורר</a></li>
-                                      <li style="float:right"><a data-toggle="tab" href="#menu2">חיפוש עפ"י שם השיר</a></li> 
+<nav class="navbar navbar-inverse" >
+  <div class="container-fluid" style="margin-right:-40px">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="active" style="float:right"><a data-toggle="tab" href="#home">דף הבית</a></li>  
+        <li style="float:right"><a data-toggle="tab" href="#menu1">חיפוש עפ"י משורר</a></li>
+        <li style="float:right"><a data-toggle="tab" href="#menu2">חיפוש עפ"י שם השיר</a></li> 
         <li style="float:right"><a data-toggle="tab" href="#menu3">תהליך הפיתוח</a></li> 
 
 
-  
-        </ul>
-      </div>
+
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>
 
 <div class="tab-content">
   <div dir="rtl" align="right" style="margin-right:20px" id="home" class="tab-pane fade in active" >
-  כחלק מהקורס בו אנו לוקחים חלק, "מדעי הרוח הדיגיטליים" באוניברסיטת בן-גוריון בנגב,<br>
-  בחרנו לממש פרוייקט אשר ינגיש לקהילת העיוורים וכבדי הראייה בישראל את מאגר<br>
-  השירה העברית של פרוייקט <a href="http://benyehuda.org/">בן-יהודה</a> בתרגום לכתב ברייל.<br><br>
-  <b>אנו מקווים כי בפרוייקט זה, הקלנו במידה מסויימת על האתגרים היום יומיים של קהילת העיוורים וכבדי הראייה בישראל.<br><br><br><br><br></b>
-  <small>תודה לפרוייקט <a href="http://benyehuda.org/">בן יהודה</a> אשר המיר את התכנים לפורמט דיגיטלי ואיפשר לנו לממש פרוייקט זה.</small>
+    כחלק מהקורס בו אנו לוקחים חלק, "מדעי הרוח הדיגיטליים" באוניברסיטת בן-גוריון בנגב,<br>
+    בחרנו לממש פרוייקט אשר ינגיש לקהילת העיוורים וכבדי הראייה בישראל את מאגר<br>
+    השירה העברית של פרוייקט <a href="http://benyehuda.org/">בן-יהודה</a> בתרגום לכתב ברייל.<br><br>
+    <b>אנו מקווים כי בפרוייקט זה, הקלנו במידה מסויימת על האתגרים היום יומיים של קהילת העיוורים וכבדי הראייה בישראל.<br><br><br><br><br></b>
+    <small>תודה לפרוייקט <a href="http://benyehuda.org/">בן יהודה</a> אשר המיר את התכנים לפורמט דיגיטלי ואיפשר לנו לממש פרוייקט זה.</small>
   </div>
 
   <div dir="rtl" style="margin-right:20px" id="menu1" class="tab-pane fade">
-    <table>
-      <tr id="poetsList">
-        <div id="poets" disabled="true" style="visibility: hidden;">
-          
+        <!--<table>
+          <tr id="poetsList">
+            <div id="poets" disabled="true" style="visibility: hidden;">
+
+            </div>
+          </tr> 
+          <tr id="poemsList" style="height:40px">
+            <div id="poems" style="visibility:hidden;">
+
+            </select>
+          </tr>
+        </table>
+
+        <br>
+        <div id="spinner" style="visibility: hidden" class="container" >
+          <div class="loader" style="height:20px;width:20px;"></div>
         </div>
-      </tr> 
-      <tr id="poemsList" style="height:40px">
-        <div id="poems" style="visibility:hidden;">
+
+        <div id="poem" style="white-space: pre-wrap;">
+          <td><div id="originalText"></div></td><td><div id="braileText"></div></td>
+        </div>-->
+        <div style="float:right;width:600px"> 
+          <div class="alphabet">
+            <a class="first" href="#">א</a>
+            <a href="#">ב</a>
+            <a href="#">ג</a>
+            <a href="#">ד</a>
+            <a href="#">ה</a>
+            <a href="#">ו</a>
+            <a href="#">ז</a>
+            <a href="#">ח</a>
+            <a href="#">ט</a>
+            <a href="#">י</a>
+            <a href="#">כ</a>
+            <a href="#">ל</a>
+            <a href="#">מ</a>
+            <a href="#">נ</a>
+            <a href="#">ס</a>
+            <a href="#">ע</a>
+            <a href="#">פ</a>
+            <a href="#">צ</a>
+            <a href="#">ק</a>
+            <a href="#">ר</a>
+            <a href="#">ש</a>
+            <a href="#">ת</a>
+          </div><br>
+          <div id="poets">
+            <table id="poets-table">
+              <tbody id="poets-table-body" class="poetsList">
+              <tr><td><div id="spinner" style="visibility: hidden" class="container" >
+                  <div class="loader" style="height:20px;width:20px;"></div>
+                </div></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <br>
+
+          <div id="poemsSection">
+            <div class="alphabet_poems">
+              <a class="first" href="#">א</a>
+              <a href="#">ב</a>
+              <a href="#">ג</a>
+              <a href="#">ד</a>
+              <a href="#">ה</a>
+              <a href="#">ו</a>
+              <a href="#">ז</a>
+              <a href="#">ח</a>
+              <a href="#">ט</a>
+              <a href="#">י</a>
+              <a href="#">כ</a>
+              <a href="#">ל</a>
+              <a href="#">מ</a>
+              <a href="#">נ</a>
+              <a href="#">ס</a>
+              <a href="#">ע</a>
+              <a href="#">פ</a>
+              <a href="#">צ</a>
+              <a href="#">ק</a>
+              <a href="#">ר</a>
+              <a href="#">ש</a>
+              <a href="#">ת</a>
+            </div><br>
+            <div id="poems">
+              <table id="poems-table">
+                <tbody id="poems-table-body" class="poemsList">
+                </tbody>
+              </table>
+            </div>
+
+            <br>
+
+            <div id="spinner" style="visibility: visible;float:right;width:100px;" class="container" >
+              <div class="loader" style="height:20px;width:20px;"></div>
+            </div> 
+
+          </div>
+        </div>
+        <div style="float:right">
+          <div >
+            <table id="poem"  style="white-space: pre-wrap;"><tr><td><div id="originalText"></div></td><td><div id="braileText"></div></td></tr></table>
+            <div id="left_spinner" style="visibility: hidden;float:right;width:100px;" class="container" >
+              <div class="loader" style="height:20px;width:20px;"></div>
+            </div> 
+          </div>
+
+        </div>
+
+
+      </div>
+
+
+
+      <div dir="rtl" style="margin-right:20px" id="menu2" class="tab-pane fade">
         
-        </select>
-      </tr>
-    </table>
 
-    <br>
-    <div id="spinner" style="visibility: hidden" class="container" >
-      <div class="loader" style="height:20px;width:20px;"></div>
+         <div style="float:right;width:600px"> 
+        
+
+          <div id="poemsSection">
+          <table><tr><td width=110>חיפוש שיר במאגר</td><td><input id="autocomplete" disabled="true" placeholder="טוען..."></td></tr>
+          </table>
+            <div class="alphabet_poems_tab2">
+              <br><a class="first" href="#">א</a>
+              <a href="#">ב</a>
+              <a href="#">ג</a>
+              <a href="#">ד</a>
+              <a href="#">ה</a>
+              <a href="#">ו</a>
+              <a href="#">ז</a>
+              <a href="#">ח</a>
+              <a href="#">ט</a>
+              <a href="#">י</a>
+              <a href="#">כ</a>
+              <a href="#">ל</a>
+              <a href="#">מ</a>
+              <a href="#">נ</a>
+              <a href="#">ס</a>
+              <a href="#">ע</a>
+              <a href="#">פ</a>
+              <a href="#">צ</a>
+              <a href="#">ק</a>
+              <a href="#">ר</a>
+              <a href="#">ש</a>
+              <a href="#">ת</a>
+            </div><br>
+            <div id="poems-tab2">
+              <table id="poems-table-tab2">
+                <tbody id="poems-table-body-tab2" class="poemsList">
+                </tbody>
+              </table>
+            </div>
+
+            <br>
+
+            <div id="spinner-tab2" style="visibility: visible;float:right;width:100px;" class="container" >
+              <div class="loader" style="height:20px;width:20px;"></div>
+            </div> 
+
+          </div>
+        </div>
+        <div style="float:right">
+          <div >
+
+            <table id="poem-tab2" style="white-space: pre-wrap;"><tr><td><div id="originalText"></div></td><td><div id="braileText"></div></td></tr></table>
+            <div id="left_spinner_tab2" style="visibility: hidden;float:right;width:100px;" class="container" >
+              <div class="loader" style="height:20px;width:20px;"></div>
+            </div> 
+          </div>
+
+        </div>
+
+
+
+      </div>
+
+
+      <div dir="rtl" align="right" style="margin-right:20px" id="menu3" class="tab-pane fade">
+        1.<b> פיתוח סקריפט פייתון</b><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.1. הסקריפט פותח את אתר פרוייקט בן-יהודה ומוצא את אלמנטי ה-HTML הרלוונטים על מנת לאחזר את רשימת המשוררים במאגר.<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.2. עבור כל משורר, פתחנו את לינק האובייקט הרלוונטי ובתוכו מצאנו את רשימת השירים הרלוונטית.<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.3. עבור כל שיר שמצאנו, פתחנו את הלינק וחיפשנו את הטקסט המקורי בעברית.<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.4. כל טקסט שמצאנו, פירסרנו, הורדנו ממנו את כל הניקוד העברי, החלפנו תווי יוניקוד לא חוקיים ובעצם הכנו את הטקסט לתרגום לכתב ברייל.<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.5. תרגום הטקסט עפ"י מילון הממפה ביו אותיות עבריות לאותיות ברייל.<br><br>
+        2. <b>יצירת מסד נתונים</b><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.1. יצירת MySQL Database על גבי שירות RDS ב-Amazon AWS.<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.2. בניית מודל טבלאות מתאים.<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.3. שמירת כל המידע מסקריפט הפייתון בטבלאות.<br><br>
+        3.<b> פיתוח ממשק Web</b><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.1. בניית אתר מבוסס PHP השולף מידע ממאגר הנתונים שבנינו ומציג אותו בצורה נוחה.<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.2. ביצוע תהליך Deployment לשירות ElasinBeanstalk ב-Amazon AWS.<br>
+      </div>
+
+
+
     </div>
 
-    <div id="poem" style="white-space: pre-wrap;">
-    <td><div id="originalText"></div></td><td><div id="braileText"></div></td>
-    </div>
-
-  </div>
-
-
-
-    <div dir="rtl" style="margin-right:20px" id="menu2" class="tab-pane fade">
-        בפיתוח
-
-     </div>
-
-
-  <div dir="rtl" align="right" style="margin-right:20px" id="menu3" class="tab-pane fade">
-  1.<b> פיתוח סקריפט פייתון</b><br>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.1. הסקריפט פותח את אתר פרוייקט בן-יהודה ומוצא את אלמנטי ה-HTML הרלוונטים על מנת לאחזר את רשימת המשוררים במאגר.<br>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.2. עבור כל משורר, פתחנו את לינק האובייקט הרלוונטי ובתוכו מצאנו את רשימת השירים הרלוונטית.<br>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.3. עבור כל שיר שמצאנו, פתחנו את הלינק וחיפשנו את הטקסט המקורי בעברית.<br>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.4. כל טקסט שמצאנו, פירסרנו, הורדנו ממנו את כל הניקוד העברי, החלפנו תווי יוניקוד לא חוקיים ובעצם הכנו את הטקסט לתרגום לכתב ברייל.<br>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.5. תרגום הטקסט עפ"י מילון הממפה ביו אותיות עבריות לאותיות ברייל.<br><br>
-  2. <b>יצירת מסד נתונים</b><br>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.1. יצירת MySQL Database על גבי שירות RDS ב-Amazon AWS.<br>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.2. בניית מודל טבלאות מתאים.<br>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.3. שמירת כל המידע מסקריפט הפייתון בטבלאות.<br><br>
-  3.<b> פיתוח ממשק Web</b><br>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.1. בניית אתר מבוסס PHP השולף מידע ממאגר הנתונים שבנינו ומציג אותו בצורה נוחה.<br>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.2. ביצוע תהליך Deployment לשירות ElasinBeanstalk ב-Amazon AWS.<br>
-  </div>
-
-
-
-     </div>
-
-  <div style="visibility: hidden" id="poemName"></div>
+    <div style="visibility: hidden" id="poemName"></div>
+    <div style="visibility: hidden" id="poemNameTab2"></div>
 
 
 
 
 
+    <script>
 
 
 
 
 
+      function fetchPoem(poem_id, poem_name) {
+        document.getElementById("poemName").innerHTML = poem_name;
+        document.getElementById("left_spinner").style.visibility = "visible";
+        document.getElementById("poem").innerHTML = "";
+
+        $.ajax({
+          type: "POST",
+          url: "./php/getpoem.php",
+          data:{ poemID: poem_id }, 
+          success: function(data){ 
+            var a = "<a href='javascript:printBraileText();'>הדפסה</a> \\ <a href='javascript:makeTextFile(\"" +
+            document.getElementById("poemName").innerHTML + "\");'>שמירת טקסט עברי לקובץ</a> \\  <a href='javascript:makeBraileFile(\"" + 
+            document.getElementById("poemName").innerHTML + "\");'>שמירת טקסט ברייל לקובץ</a><br><br><br>";
+
+            document.getElementById("poem").innerHTML = a + data;
+            document.getElementById("left_spinner").style.visibility = "hidden";
+            document.getElementById("poets").disabled = false;
+            document.getElementById("poems").disabled = false; 
+
+          }
+        })
+      }
+
+      function fetchPoemTab2(poem_id, poem_name) {
+        document.getElementById("poemNameTab2").innerHTML = poem_name;
+        document.getElementById("left_spinner_tab2").style.visibility = "visible";
+        document.getElementById("poem-tab2").innerHTML = "";
+
+        $.ajax({
+          type: "POST",
+          url: "./php/getpoem.php",
+          data:{ poemID: poem_id }, 
+          success: function(data){ 
+            var a = "<a href='javascript:printBraileText();'>הדפסה</a> \\ <a href='javascript:makeTextFile(\"" +
+            document.getElementById("poemNameTab2").innerHTML + "\");'>שמירת טקסט עברי לקובץ</a> \\  <a href='javascript:makeBraileFile(\"" + 
+            document.getElementById("poemNameTab2").innerHTML + "\");'>שמירת טקסט ברייל לקובץ</a><br><br><br>";
+
+            document.getElementById("poem-tab2").innerHTML = a + data;
+            document.getElementById("left_spinner_tab2").style.visibility = "hidden";
+
+          }
+        })
+      }
 
 
 
+      /////
+
+      function fetchPoems() {
+        document.getElementById("poem-tab2").innerHTML = ""; 
+        document.getElementById("poems-table-body-tab2").innerHTML = ""; 
+
+        document.getElementById("spinner-tab2").style.visibility = "visible";
 
 
-  <script>
+        $.ajax({
+          type: "POST",
+          url: "./php/getpoems.php",
+          
+          success: function(data){
+            document.getElementById("poems-table-body-tab2").innerHTML = data;
+            document.getElementById("spinner-tab2").style.visibility = "hidden";
+            document.getElementById("autocomplete").placeholder = "";
+            document.getElementById("autocomplete").disabled = false;
+            var tags = $('#poems-table-body-tab2 > tr > td > a').toArray();
 
-    function fetchPoem(poem_id, poem_name) {
-      document.getElementById("poemName").innerHTML = poem_name;
-      document.getElementById("spinner").style.visibility = "visible";
-      document.getElementById("poem").innerHTML = "";
 
-      $.ajax({
-        type: "POST",
-        url: "./php/getpoem.php",
-        data:{ poemID: poem_id }, 
-        success: function(data){ 
-          var a = "<a href='javascript:printBraileText();'>הדפסה</a>  \\  <a href='javascript:makeBraileFile();'>שמירת טקסט ברייל לקובץ</a>  \\  <a href='javascript:makeTextFile();'>שמירת טקסט עברי לקובץ</a>  \\  <a href=''>שליחה במייל</a><br><br><br>";
-          document.getElementById("poem").innerHTML = a + data;
-          document.getElementById("spinner").style.visibility = "hidden";
-          document.getElementById("poets").disabled = false;
-          document.getElementById("poems").disabled = false; 
+            for (var i = 0, len = tags.length; i < len; i++) {
+              var res = tags[i].toString().substring(25, tags[i].length);
+              var resArr = res.split(",");
+              var id = resArr[0];
+              var name = resArr[1].substring(1,resArr[1].length-3).replace("  ", " ");
+              tags[i] = {label: decodeURIComponent(name), value: id};
+            }
 
-        }
-      })
+
+            $( "#autocomplete" ).autocomplete({
+              source: tags,
+                  select: function( event, ui ) { 
+                      $( "#autocomplete" ).val(ui.item.label);
+                      fetchPoemTab2(ui.item.value, ui.item.label);
+                      event.preventDefault();
+                  },
+                  change: function( event, ui ) {
+                      $( "#autocomplete" ).val(ui.item.label);
+                      event.preventDefault();
+                  },
+                  focus: function( event, ui ) {
+                      $( "#autocomplete" ).val(ui.item.label);
+                      event.preventDefault();
+                  },
+                  function (array, term) {
+                  var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(term), "i");
+                  return $.grep(array, function (value) {
+                      return matcher.test(value.label || value.value || value);
+                  });
+                },
+                delay: 400,
+          position: {
+        my : "right top",
+        at: "right bottom"
     }
+            });
 
-    function fetchPoems(poet_id) {
-      document.getElementById("poem").innerHTML = ""; 
-      document.getElementById("spinner").style.visibility = "visible";
 
-      document.getElementById("poets").disabled = true;
-      document.getElementById("poems").disabled = true; 
 
-      $.ajax({
-        type: "POST",
-        url: "./php/getpoems.php",
-        data:{ poetID: poet_id }, 
-        success: function(data){
-          document.getElementById("poemsList").innerHTML = data;
-          document.getElementById("spinner").style.visibility = "hidden";
-        }
-      })
-    }
 
-    function fetchPoets() {
-      document.getElementById("spinner").style.visibility = "visible";
+        $(function () {
+            var _poems = $('#poems-table-body-tab2 > tr > td > a'); 
+
+            _poems.click(function () {
+              var _poem = $(this), _text = $(this).text(), _count = 0;
+              _poems.removeClass("active");
+              _poem.addClass("active");
+
+
+
+          });
+
+        });
+
+            $(function () {
+              var _alphabets = $('.alphabet_poems_tab2 > a');
+              var _contentRows = $('#poems-table-tab2 tbody tr');
+
+              _alphabets.click(function () {
+                var _letter = $(this), _text = $(this).text(), _count = 0;
+
+                _alphabets.removeClass("active");
+                _letter.addClass("active");
+
+                _contentRows.hide();
+                _contentRows.each(function (i) {
+                  var _cellText = $(this).children('td').eq(0).text();
+                  if (RegExp('^' + _text).test(_cellText)) {
+                    _count += 1;
+                    $(this).fadeIn(400);
+                  }
+                });
+              });
+            });
+
+          }
+        })
+      }
+
+      /////
+
+
+
+
+
+      function fetchPoemsByPoet(poet_id) {
+        document.getElementById("poem").innerHTML = ""; 
+        document.getElementById("poems-table-body").innerHTML = ""; 
+
+        document.getElementById("spinner").style.visibility = "visible";
+
+
+        $.ajax({
+          type: "POST",
+          url: "./php/getpoemsbypoet.php",
+          data:{ poetID: poet_id }, 
+          success: function(data){
+            document.getElementById("poems-table-body").innerHTML = data;
+            document.getElementById("spinner").style.visibility = "hidden";
+
+
+        $(function () {
+            var _poets = $('#poems-table-body > tr > td > a'); 
+
+            _poets.click(function () {
+              var _poet = $(this), _text = $(this).text(), _count = 0;
+              _poets.removeClass("active");
+              _poet.addClass("active");
+
+
+
+          });
+
+        });
+
+            $(function () {
+              var _alphabets = $('.alphabet_poems > a');
+              var _contentRows = $('#poems-table tbody tr');
+
+              _alphabets.click(function () {
+                var _letter = $(this), _text = $(this).text(), _count = 0;
+
+                _alphabets.removeClass("active");
+                _letter.addClass("active");
+
+                _contentRows.hide();
+                _contentRows.each(function (i) {
+                  var _cellText = $(this).children('td').eq(0).text();
+                  if (RegExp('^' + _text).test(_cellText)) {
+                    _count += 1;
+                    $(this).fadeIn(400);
+                  }
+                });
+              });
+            });
+
+          }
+        })
+      }
+
+      function fetchPoets() {
+        document.getElementById("spinner").style.visibility = "visible";
 
     //above (HotelArea) are actually the value (this.value) in the form which will be what the user select (North, South, East or West)
     var xhttp = new XMLHttpRequest();
@@ -195,66 +506,102 @@
     
     xhttp.onreadystatechange = function() { 
       if(xhttp.readyState == 4 && xhttp.status == 200) {  
-        document.getElementById("poetsList").innerHTML = xhttp.responseText;
+        document.getElementById("poets-table-body").innerHTML = xhttp.responseText;
         document.getElementById("spinner").style.visibility = "hidden";
+
+        $(function () {
+            var _poets = $('#poets-table-body > tr > td > a'); 
+                      var _alphabets_poems = $('.alphabet_poems > a');    
+
+            _poets.click(function () {
+              var _poet = $(this), _text = $(this).text(), _count = 0;
+              _poets.removeClass("active");
+              _alphabets_poems.removeClass("active");
+              _poet.addClass("active");
+
+
+          });
+
+        });
+
+        $(function () {
+          var _alphabets = $('.alphabet > a');
+          var _contentRows = $('#poets-table tbody tr');
+
+          _alphabets.click(function () {
+            var _letter = $(this), _text = $(this).text(), _count = 0;
+
+            _alphabets.removeClass("active");
+            _letter.addClass("active");
+
+            _contentRows.hide();
+            _contentRows.each(function (i) {
+              var _cellText = $(this).children('td').eq(0).text();
+              if (RegExp('^' + _text).test(_cellText)) {
+                _count += 1;
+                $(this).fadeIn(400);
+              }
+            });
+
+
+
+          });
+
+        });
+
 
       }       
     }   
   }
 
-  window.onload = fetchPoets;
+  function onLoad(){
+      fetchPoets();
+      fetchPoems();
+
+  }
+
+  window.onload = onLoad;
 
 
   function printBraileText() {
-        childWindow = window.open('','childWindow','location=yes, menubar=yes, toolbar=yes');
-        childWindow.document.open();
-        childWindow.document.write('<html><head></head><body>');
-        childWindow.document.write(document.getElementById('braileText').innerHTML.replace(/\n/gi,'<br>'));
-        childWindow.document.write('</body></html>');
-        childWindow.print();
-        childWindow.document.close();
-        childWindow.close();
-      }
-
-  function download() {
-        var content = document.getElementById('braileText').innerHTML;
-        
-        var blob = new Blob([content]);
-        var evt = document.createEvent("HTMLEvents");
-        evt.initEvent("click");
-        $("<a>", {
-          download: "song.txt",
-          href: url.createObjectURL(blob)
-        }).get(0).dispatchEvent(evt);
-      
+    childWindow = window.open('','childWindow','location=yes, menubar=yes, toolbar=yes');
+    childWindow.document.open();
+    childWindow.document.write('<html><head></head><body>');
+    childWindow.document.write(document.getElementById('braileText').innerHTML.replace(/\n/gi,'<br>'));
+    childWindow.document.write('</body></html>');
+    childWindow.print();
+    childWindow.document.close();
+    childWindow.close();
   }
 
-function makeTextFile() {
 
-data = new Blob([
+
+  function makeTextFile(poemName) {
+
+    data = new Blob([
   new Uint8Array([0xEF, 0xBB, 0xBF]), // UTF-8 BOM
-  document.getElementById('originalText').innerHTML.replace(/\n/g, "\r\n")
+  document.getElementById('originalText').innerHTML.replace(/\n/g, "\r\n").replace(/&nbsp;/g, ' ')
 
   ],
   { type: "text/plain;charset=utf-8" });
 
 
 
- var a = document.createElement("a"),
-                url = URL.createObjectURL(data);
-        a.href = url;
-        a.download = document.getElementById("poemName").innerHTML + "-hebrew.txt";
-        document.body.appendChild(a);
-        a.click();
-        setTimeout(function() {
-            document.body.removeChild(a);
-            window.URL.revokeObjectURL(url);  
-        }, 0); 
-      }
+    var a = document.createElement("a"),
+    url = URL.createObjectURL(data);
+    a.href = url;
+    a.download = poemName + "-hebrew.txt";
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function() {
+      document.body.removeChild(a);
+      window.URL.revokeObjectURL(url);  
+    }, 0); 
+  }
 
-      function makeBraileFile() {
+  function makeBraileFile(poemName) {
 
-data = new Blob([
+    data = new Blob([
   new Uint8Array([0xEF, 0xBB, 0xBF]), // UTF-8 BOM
   document.getElementById('braileText').innerHTML.replace(/\n/g, "\r\n")
 
@@ -263,17 +610,20 @@ data = new Blob([
 
 
 
- var a = document.createElement("a"),
-                url = URL.createObjectURL(data);
-        a.href = url;
-        a.download = document.getElementById("poemName").innerHTML + "-braile.txt";
-        document.body.appendChild(a);
-        a.click();
-        setTimeout(function() {
-            document.body.removeChild(a);
-            window.URL.revokeObjectURL(url);  
-        }, 0); 
-      }
+    var a = document.createElement("a"),
+    url = URL.createObjectURL(data);
+    a.href = url;
+    a.download = poemName + "-braile.txt";
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function() {
+      document.body.removeChild(a);
+      window.URL.revokeObjectURL(url);  
+    }, 0); 
+  }
+
+
+
 
 
 </script>

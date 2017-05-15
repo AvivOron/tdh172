@@ -22,17 +22,23 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     // output data of each row
-    echo "<td width=90>בחירת משורר:</td><td>";
-    echo "<select id='poets' onchange='fetchPoems(this.value)'>";
-    echo "<option>בחר משורר</option>";
+    
+    //echo "<td width=90>בחירת משורר:</td><td>";
+    //echo "<select id='poets' onchange='fetchPoems(this.value)'>";
+    //echo "<option>בחר משורר</option>";
 
     while($row = mysqli_fetch_array($result))
     { 
-    echo "<option value=" . $row['id'] . ">" . $row['name'] . "</option>";
+    //echo "<option value=" . $row['id'] . ">" . $row['name'] . "</option>";
+                      echo "<tr>";
+                      echo "<td>";
+                      echo "<a href='javascript:fetchPoemsByPoet(". $row['id'] . ");'>" . $row['name'] . "</a> ";
+                      echo "</td>";
+                      echo "</tr>";
     }
 
-    echo "</select>";
-    echo "</td>";
+    //echo "</select>";
+    //echo "</td>";
 
 
 
