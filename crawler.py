@@ -135,7 +135,7 @@ for artistLink in artistsLinks:
 
 	except Exception as e: 
 		print ("couldnt open " + str(englishName) + " " + str(e))
-		print ('Error on line {}'.format(sys.exc_info()[-1].tb_lineno))
+			print ('Error on line {}'.format(sys.exc_info()[-1].tb_lineno))
 		break
 
 myDB.close()

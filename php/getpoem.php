@@ -19,6 +19,8 @@ if ($conn->connect_error) {
 } 
 
 $poemID = $_POST["poemID"];
+$dest1 = $_POST["dest1"];
+$dest2 = $_POST["dest2"];
 $sql = "SELECT * FROM poems where id = '$poemID'";
 $result = $conn->query($sql);
 
@@ -30,8 +32,8 @@ if ($result->num_rows > 0) {
 
     while($row = mysqli_fetch_array($result))
     { 
-    echo "<td><div id='originalText'>" . $row['original_data'] . "</div></td>";
-    echo "<td style='padding-right:20px'><div id='braileText'>" . $row['translated_data'] . "</div></td>";
+    echo "<td><div id='$dest1'>" . $row['original_data'] . "</div></td>";
+    echo "<td style='padding-right:20px'><div id='$dest2'>" . $row['translated_data'] . "</div></td>";
 
     }
 

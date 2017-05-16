@@ -239,7 +239,7 @@
         <div style="float:right:style:max-width:660px">
           <div >
             <div id="actions-tab2"></div>
-            <table id="poem-tab2" style="white-space: pre-wrap;"><tr><td><div id="originalText"></div></td><td><div id="braileText"></div></td></tr></table>
+            <table id="poem-tab2" style="white-space: pre-wrap;"><tr><td><div id="originalTextTab2"></div></td><td><div id="braileTextTab2"></div></td></tr></table>
             <div id="left_spinner_tab2" style="visibility: hidden;float:right;width:100px;" class="container" >
               <div class="loader" style="height:20px;width:20px;"></div>
             </div> 
@@ -293,9 +293,9 @@
         $.ajax({
           type: "POST",
           url: "./php/getpoem.php",
-          data:{ poemID: poem_id }, 
+          data:{ poemID: poem_id, dest1: "originalText", dest2: "braileText" }, 
           success: function(data){ 
-            var a = "<a href='javascript:printBraileText();'>הדפסה</a> \\ <a href='javascript:makeTextFile(\"" +
+            var a = "<a href='javascript:printBraileText(\"braileText\");'>הדפסה</a> \\ <a href='javascript:makeTextFile(\"" +
             document.getElementById("poemName").innerHTML + "\");'>שמירת טקסט עברי לקובץ</a> \\  <a href='javascript:makeBraileFile(\"" + 
             document.getElementById("poemName").innerHTML + "\");'>שמירת טקסט ברייל לקובץ</a><br><br><br>";
             document.getElementById("actions").innerHTML= a;
@@ -317,9 +317,9 @@
         $.ajax({
           type: "POST",
           url: "./php/getpoem.php",
-          data:{ poemID: poem_id }, 
+          data:{ poemID: poem_id, dest1: "originalTextTab2", dest2: "braileTextTab2" }, 
           success: function(data){ 
-            var a = "<a href='javascript:printBraileText();'>הדפסה</a> \\ <a href='javascript:makeTextFile(\"" +
+            var a = "<a href='javascript:printBraileText(\"braileTextTab2\");'>הדפסה</a> \\ <a href='javascript:makeTextFile(\"" +
             document.getElementById("poemNameTab2").innerHTML + "\");'>שמירת טקסט עברי לקובץ</a> \\  <a href='javascript:makeBraileFile(\"" + 
             document.getElementById("poemNameTab2").innerHTML + "\");'>שמירת טקסט ברייל לקובץ</a><br><br><br>";
             document.getElementById("actions-tab2").innerHTML = a;
@@ -567,11 +567,11 @@
   window.onload = onLoad;
 
 
-  function printBraileText() {
+  function printBraileText(textSource) {
     childWindow = window.open('','childWindow','location=yes, menubar=yes, toolbar=yes');
     childWindow.document.open();
     childWindow.document.write('<html><head></head><body>');
-    childWindow.document.write(document.getElementById('braileText').innerHTML.replace(/\n/gi,'<br>'));
+    childWindow.document.write(document.getElementById(textSource).innerHTML.replace(/\n/gi,'<br>'));
     childWindow.document.write('</body></html>');
     childWindow.print();
     childWindow.document.close();
