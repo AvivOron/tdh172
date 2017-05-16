@@ -17,7 +17,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
-$sql = "SELECT id, name FROM poets";
+$sql = "SELECT * FROM poets";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -32,7 +32,10 @@ if ($result->num_rows > 0) {
     //echo "<option value=" . $row['id'] . ">" . $row['name'] . "</option>";
                       echo "<tr>";
                       echo "<td>";
-                      echo "<a href='javascript:fetchPoemsByPoet(". $row['id'] . ");'>" . $row['name'] . "</a> ";
+                      if( $row['year_of_birth'] > 0 and  $row['year_of_death'] >0)
+                        echo "<a href='javascript:fetchPoemsByPoet(". $row['id'] . ");'>" . $row['name'] . "<small> (" . $row['year_of_birth'] . "-" . $row['year_of_death'] . ")</small></a> ";
+                      else
+                        echo "<a href='javascript:fetchPoemsByPoet(". $row['id'] . ");'>" . $row['name'] . "</a> ";
                       echo "</td>";
                       echo "</tr>";
     }
