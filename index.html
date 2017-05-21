@@ -50,11 +50,11 @@
     </div>
     <div id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li class="active" style="float:right"><a data-toggle="tab" href="#home">דף הבית</a></li>  
-        <li style="float:right"><a data-toggle="tab" href="#menu1">חיפוש עפ"י משורר</a></li>
-        <li style="float:right"><a data-toggle="tab" href="#menu2">חיפוש עפ"י שם השיר</a></li> 
-        <li style="float:right"><a data-toggle="tab" href="#menu3">ציר זמן</a></li> 
-        <li style="float:right"><a data-toggle="tab" href="#menu4">תהליך הפיתוח</a></li> 
+        <li class="active" id="nabThumb"><a data-toggle="tab" href="#home">דף הבית</a></li>  
+        <li id="nabThumb"><a data-toggle="tab" href="#menu1">חיפוש עפ"י משורר</a></li>
+        <li id="nabThumb"><a data-toggle="tab" href="#menu2">חיפוש עפ"י שם השיר</a></li> 
+        <li id="nabThumb"><a data-toggle="tab" href="#menu3">ציר זמן</a></li> 
+        <li id="nabThumb"><a data-toggle="tab" href="#menu4">תהליך הפיתוח</a></li> 
 
 
 
@@ -65,7 +65,7 @@
 </nav>
 
 <div class="tab-content">
-  <div dir="rtl" align="right" style="margin-right:20px" id="home" class="tab-pane fade in active" >
+  <div dir="rtl" align="right" id="home" class="tab-pane fade in active" >
     כחלק מהקורס בו אנו לוקחים חלק, "מדעי הרוח הדיגיטליים" באוניברסיטת בן-גוריון בנגב,<br>
     בחרנו לממש פרוייקט אשר ינגיש לקהילת העיוורים וכבדי הראייה בישראל את מאגר<br>
     השירה העברית של פרוייקט <a href="http://benyehuda.org/">בן-יהודה</a> בתרגום לכתב ברייל.<br><br>
@@ -73,7 +73,7 @@
     <small>תודה לפרוייקט <a href="http://benyehuda.org/">בן יהודה</a> אשר המיר את התכנים לפורמט דיגיטלי ואיפשר לנו לממש פרוייקט זה.</small>
   </div>
 
-  <div dir="rtl" style="margin-right:20px" id="menu1" class="tab-pane fade">
+  <div dir="rtl" id="menu1" class="tab-pane fade">
         <!--<table>
           <tr id="poetsList">
             <div id="poets" disabled="true" style="visibility: hidden;">
@@ -95,7 +95,7 @@
         <div id="poem" style="white-space: pre-wrap;">
           <td><div id="originalText"></div></td><td><div id="braileText"></div></td>
         </div>-->
-        <div style="float:right;width:500px"> 
+        <div id="artist_list"> 
           <div class="alphabet">
             <a class="first" href="#">א</a>
             <a href="#">ב</a>

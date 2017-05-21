@@ -19,13 +19,13 @@
     width: 680px;
 }
 
-    .wrapper h1
-    {
-        color: #555;
-        text-align: center;
-        text-shadow: rgba(0, 0, 0, 0.15) 0px 0px 1px;
-        letter-spacing: 2px;
-    }
+.wrapper h1
+{
+    color: #555;
+    text-align: center;
+    text-shadow: rgba(0, 0, 0, 0.15) 0px 0px 1px;
+    letter-spacing: 2px;
+}
 
 #poets
 {
@@ -33,72 +33,90 @@
     background: white;
 }
 
+#nabThumb{
+    float: right;
+    color: red;
+}
+
 .alphabet, .alphabet_poems, .alphabet_poems_tab2
 {
     overflow: hidden;
 }
 
-    .alphabet a, .alphabet_poems a,.alphabet_poems_tab2 a, #poets-table tr
-    {
-        transition: background-color 0.3s ease-in-out;
-        -moz-transition: background-color 0.3s ease-in-out;
-        -webkit-transition: background-color 0.3s ease-in-out;
-    }
+.alphabet a, .alphabet_poems a,.alphabet_poems_tab2 a, #poets-table tr
+{
+    transition: background-color 0.3s ease-in-out;
+    -moz-transition: background-color 0.3s ease-in-out;
+    -webkit-transition: background-color 0.3s ease-in-out;
+}
 
-    .alphabet a, .alphabet_poems a, .alphabet_poems_tab2 a
-    {
-        width: 20px;
-        float: right;
-        color: #333;
-        cursor: pointer;
-        height: 20px;
-        border: 0px solid #CCC;
-        display: block;
-        font-size: 18px;
-        text-align: center;
-        line-height: 20px;
-        text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
-        border-right: none;
-        text-decoration: none;
-    }
+.alphabet a, .alphabet_poems a, .alphabet_poems_tab2 a
+{
+    width: 20px;
+    float: right;
+    color: #333;
+    cursor: pointer;
+    height: 20px;
+    border: 0px solid #CCC;
+    display: block;
+    font-size: 18px;
+    text-align: center;
+    line-height: 20px;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
+    border-right: none;
+    text-decoration: none;
+}
 
 .poetsList, .poemsList
 {
     overflow: hidden;
 }
 
-   .poetsList a,  .poemsList a
-    {
-    	color: #000000;
-    	text-decoration: none;
-    }
+.poetsList a,  .poemsList a
+{
+   color: #000000;
+   text-decoration: none;
+}
 
 
-     .poetsList a.active, .poemsList a.active
-    {
-        font-weight: bold;
-        background-color: #a8a8a8;
-    }
+.poetsList a.active, .poemsList a.active
+{
+    font-weight: bold;
+    background-color: #a8a8a8;
+}
 
 
 
 
-        .alphabet a.first, .alphabet_poems a.first, .alphabet_poems_tab2 a.first
-        {
-            border-radius: 3px 0 0 3px;
-        }
+.alphabet a.first, .alphabet_poems a.first, .alphabet_poems_tab2 a.first
+{
+    border-radius: 3px 0 0 3px;
+}
 
-        .alphabet a.last, .alphabet_poems a.last, .alphabet_poems_tab2 a.last
-        {
-            border-right: 1px solid silver;
-            border-radius: 0 3px 3px 0;
-        }
+.alphabet a.last, .alphabet_poems a.last, .alphabet_poems_tab2 a.last
+{
+    border-right: 1px solid silver;
+    border-radius: 0 3px 3px 0;
+}
 
-        .alphabet a:hover,
-        .alphabet a.active,
-        .alphabet_poems a:hover,
-        .alphabet_poems a.active,
-        .alphabet_poems_tab2 a.active
-        {
-            background-color: #a8a8a8;
-        }
+.alphabet a:hover,
+.alphabet a.active,
+.alphabet_poems a:hover,
+.alphabet_poems a.active,
+.alphabet_poems_tab2 a.active
+{
+    background-color: #a8a8a8;
+}
+
+#home{
+    margin-right: 20px;
+}
+
+#menu1{
+    margin-right: 20px;
+}
+
+#artist_list{
+    float:right;
+    width: 500px;
+}
