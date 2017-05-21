@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="stylesheet.css">
+  <link rel="stylesheet" type="text/css" href="assets/stylesheet.css">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
@@ -13,29 +13,12 @@
   <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="ajax.js"></script>
-  <style>
-    /* Remove the navbar's default rounded borders and increase the bottom margin */ 
-    .navbar {
-      margin-bottom: 50px;
-      border-radius: 0;
-    }
-    
-    /* Remove the jumbotron's default bottom margin */ 
-    .jumbotron {
-      margin-bottom: 0;
-    }
+  <script type="text/javascript" src="assets/ajax.js"></script>
 
-    /* Add a gray background color and some padding to the footer */
-    footer {
-      background-color: #f2f2f2;
-      padding: 25px;
-    }
-  </style>
 </head>
 <body dir="rtl">
 
-  <div class="jumbotron" style="background-image: url('brimg2.jpg');background-size:     cover;                      /* <------ */
+  <div class="jumbotron" style="background-image: url('assets/pics/brimg2.jpg');background-size:     cover;                      /* <------ */
   background-repeat:   no-repeat;
   background-position: center center;">
   <div class="container text-center">
@@ -245,9 +228,6 @@
           </div>
 
         </div>
-
-
-
       </div>
 
       <div dir="rtl" align="right" style="margin-right:20px" id="menu3" class="tab-pane fade">
@@ -255,44 +235,49 @@
       </div>
 
       <div dir="rtl" align="right" style="margin-right:20px" id="menu4" class="tab-pane fade">
-        1.<b> פיתוח סקריפט איחזור</b><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.1. כתיבת סקריפט <b>Python</b> אשר פותח את אתר פרוייקט בן-יהודה ומוצא את אלמנטי ה-HTML הרלוונטים על מנת לאחזר את רשימת המשוררים במאגר.<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.2. עבור כל משורר, פתחנו את לינק האובייקט הרלוונטי ובתוכו מצאנו את רשימת השירים הרלוונטית.<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.3. עבור כל שיר שמצאנו, פתחנו את הלינק וחיפשנו את הטקסט המקורי בעברית.<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.4. כל טקסט שמצאנו, פירסרנו, הורדנו ממנו את כל הניקוד העברי, החלפנו תווי יוניקוד לא חוקיים ובעצם הכנו את הטקסט לתרגום לכתב ברייל.<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.5. תרגום הטקסט עפ"י מילון הממפה ביו אותיות עבריות לאותיות ברייל.<br><br>
-        2. <b>יצירת מסד נתונים</b><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.1. יצירת <b>MySQL Database</b> על גבי שירות <b>RDS</b> ב-<b>Amazon AWS.</b><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.2. בניית מודל טבלאות מתאים.<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.3. שמירת כל המידע מסקריפט הפייתון בטבלאות.<br><br>
-        3.<b> פיתוח ממשק Web</b><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.1. בניית אתר מבוסס <b>PHP ו-Javascript</b> השולף מידע ממאגר הנתונים שבנינו ומציג אותו בצורה נוחה.<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.2. ביצוע תהליך Deployment לשירות <b>ElasinBeanstalk</b> ב-<b>Amazon AWS</b>.<br><br>
-        3.<b> פיתוח סקריפט העשרה</b><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.1. כתיבת סקריפט <b>Python</b> אשר עבור כל משורר ממסד הנתונים, יאתר ערך Wikipedia מתאים עפ"י חיפוש מספר התאמות מירבי של שיריו בדף הערך הנבחן.<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.2. לאחר מציאת הדפים הרלוונטיים (בדיקה אנושית), שליפת שנות לידה ופטירה ושמירת כל הערכים לטבלת המשוררים במסד הנתונים.<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3. עבודה עם ספריית פייתון חיצונית להתממשקות מול Wikipedia.<br>
+        <ol class="ordlist">
+          <li class="linum">
+            פיתוח סקריפט איחזור
+            <ol class="ordlist">
+              <li class="linum">כתיבת סקריפט <b>Python</b> אשר פותח את אתר פרוייקט בן-יהודה ומוצא את אלמנטי ה-HTML הרלוונטים על מנת לאחזר את רשימת המשוררים במאגר.</li>
+              <li class="linum">עבור כל משורר, פתחנו את לינק האובייקט הרלוונטי ובתוכו מצאנו את רשימת השירים הרלוונטית.</li>
+              <li class="linum">עבור כל שיר שמצאנו, פתחנו את הלינק וחיפשנו את הטקסט המקורי בעברית.</li>
+              <li class="linum">כל טקסט שמצאנו, פירסרנו, הורדנו ממנו את כל הניקוד העברי, החלפנו תווי יוניקוד לא חוקיים ובעצם הכנו את הטקסט לתרגום לכתב ברייל.</li>
+              <li class="linum">תרגום הטקסט עפ"י מילון הממפה ביו אותיות עבריות לאותיות ברייל.</li>
+            </ol>
+          </li>
+          <li class="linum">
+            <b>יצירת מסד נתונים</b>
+            <ol class="ordlist">
+              <li class="linum">יצירת <b>MySQL Database</b> על גבי שירות <b>RDS</b> ב-<b>Amazon AWS.</b></li>
+              <li class="linum">בניית מודל טבלאות מתאים.</li>
+              <li class="linum">שמירת כל המידע מסקריפט הפייתון בטבלאות.</li>
+            </ol>
+          </li>
+          <li class="linum">
+            <b> פיתוח ממשק Web</b>
+            <ol class="ordlist">
+              <li class="linum">בניית אתר מבוסס <b>PHP ו-Javascript</b> השולף מידע ממאגר הנתונים שבנינו ומציג אותו בצורה נוחה.</li>
+              <li class="linum">ביצוע תהליך Deployment לשירות <b>ElasinBeanstalk</b> ב-<b>Amazon AWS</b>.</li>
+            </ol>
+          </li>
+          <li class="linum">
+            <b> פיתוח סקריפט העשרה</b>
+            <ol class="ordlist">
+              <li class="linum">כתיבת סקריפט <b>Python</b> אשר עבור כל משורר ממסד הנתונים, יאתר ערך Wikipedia מתאים עפ"י חיפוש מספר התאמות מירבי של שיריו בדף הערך הנבחן.</li>
+              <li class="linum">לאחר מציאת הדפים הרלוונטיים (בדיקה אנושית), שליפת שנות לידה ופטירה ושמירת כל הערכים לטבלת המשוררים במסד הנתונים.<b>ElasinBeanstalk</b> ב-<b>Amazon AWS</b>.</li>
+              <li class="linum">עבודה עם ספריית פייתון חיצונית להתממשקות מול Wikipedia.</li>
+            </ol>
+          </li>
+
+        </ol>
+
       </div>
-
-
-
-
-
-
 
     </div>
 
     <div style="visibility: hidden" id="poemName"></div>
     <div style="visibility: hidden" id="poemNameTab2"></div>
-
-
-
-
-
-
-
-
-
 
 <br><br>
 
