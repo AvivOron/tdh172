@@ -7,7 +7,7 @@ import MySQLdb
 myDB = MySQLdb.connect(host="tdh.cmq2zbutzn8e.us-west-2.rds.amazonaws.com",port=3306,user="bialik",passwd="12345678",db="tdh172",charset='utf8')
 cHandler = myDB.cursor()
 wikipedia.set_lang("he")
-cHandler.execute("SELECT id,name from poets where id > 79")
+cHandler.execute("SELECT id,name from poets")
 poets = cHandler.fetchall()
 for poet in poets:
 	poet_id = poet[0]

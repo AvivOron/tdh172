@@ -33,7 +33,12 @@ if ($result->num_rows > 0) {
 
     while($row = mysqli_fetch_array($result))
     { 
-    echo "<tr><td><b>" .  $row['name'] . " \ " . $row['poet_name'] . "</b></td><td style='padding-right:20px'>למידע נוסף אודות המשורר\ת <a target='_blank' href='" .  $row['url'] . "'>לחצ\י כאן</a><br></td></tr>";
+    if(strlen($row[url]) > 0){
+      echo "<tr><td><b>" .  $row['name'] . " \ " . $row['poet_name'] . "</b></td><td style='padding-right:20px'>למידע נוסף אודות המשורר\ת <a target='_blank' href='" .  $row['url'] . "'>לחצ\י כאן</a><br></td></tr>";
+    }
+    else{
+      echo "<tr><td><b>" .  $row['name'] . " \ " . $row['poet_name'] . "</b></td><td style='padding-right:20px'><br></td></tr>";
+    }
     echo "<tr><td><br></td></tr>";
     echo "<tr>" ;
     echo "<td><div id='$dest1'>" . $row['original_data'] . "</div></td>";
