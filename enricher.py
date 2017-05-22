@@ -4,12 +4,7 @@ import wikipedia
 import re
 import MySQLdb
 
-
-wikipedia.set_lang("he")
-print(wikipedia.page("חיים נחמן ביאליק").summary)
-
-
-"""myDB = MySQLdb.connect(host="tdh.cmq2zbutzn8e.us-west-2.rds.amazonaws.com",port=3306,user="bialik",passwd="12345678",db="tdh172",charset='utf8')
+myDB = MySQLdb.connect(host="tdh.cmq2zbutzn8e.us-west-2.rds.amazonaws.com",port=3306,user="bialik",passwd="12345678",db="tdh172",charset='utf8')
 cHandler = myDB.cursor()
 wikipedia.set_lang("he")
 cHandler.execute("SELECT id,name from poets")
@@ -30,7 +25,7 @@ for poet in poets:
 		try:
 			pageObj = wikipedia.page(page)
 			#setattr(pageObj, 'rank', 0)
-
+			
 			for poem in poems:
 				poem_name = poem[0]
 				#print("poem: " + poem_name)
@@ -51,10 +46,10 @@ for poet in poets:
 		if(ranks[x] > maxRefers):
 			maxRefers = ranks[x]
 			index = x
-
+	
 	try:
 		page = wikipedia.page(pages[index])
-		print(page.summary)
+
 		year_of_birth = "";
 		year_of_death = "";
 		match1 = re.match(r'.*([1-3][0-9]{3})', page.links[0])
@@ -64,10 +59,10 @@ for poet in poets:
 			year_of_death = match2.group(1)
 
 		input = [page.title, page.url,year_of_birth,year_of_death, poet_id]
-		#dont override existing data!!
+		#dont override existing data!! 
 		#cHandler.execute("UPDATE poets set wikipedia_name=%s ,wikipedia_url=%s, year_of_birth=%s,year_of_death=%s where id=%s;", input)
 		#myDB.commit()
 	except:
 		print("failed for " + str(poet_id))
 
-myDB.close()"""
+myDB.close()
