@@ -11,12 +11,12 @@ $conn = new mysqli($servername, $username, $password, $dbname);
       printf("Error loading character set utf8: %s\n", $conn->error);
   } else {
   }
-  
+
 
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
-} 
+}
 
 $poemID = $_POST["poemID"];
 $dest1 = $_POST["dest1"];
@@ -29,11 +29,11 @@ if ($result->num_rows > 0) {
     // output data of each row
 
     echo "<table>";
-    
+
 
     while($row = mysqli_fetch_array($result))
-    { 
-    if(strlen($row[url]) > 0){
+    {
+    if(strlen($row['url']) > 0){
       echo "<tr><td><b>" .  $row['name'] . " \ " . $row['poet_name'] . "</b></td><td style='padding-right:20px'>למידע נוסף אודות המשורר\ת <a target='_blank' href='" .  $row['url'] . "'>לחצ\י כאן</a><br></td></tr>";
     }
     else{
@@ -46,7 +46,7 @@ if ($result->num_rows > 0) {
     echo "</tr>" ;
     }
 
-    
+
     echo "</table>";
 
 
@@ -58,4 +58,3 @@ if ($result->num_rows > 0) {
 }
 $conn->close();
 ?>
-
