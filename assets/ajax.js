@@ -288,7 +288,8 @@
 
         // init timeline
         google.charts.load("current", {packages:["timeline"]});
-        google.charts.setOnLoadCallback(drawChart);
+        setTimeout(function(){ drawChart(); }, 3000);
+        
 
         function drawChart() {
         var container = document.getElementById('example2.1');
