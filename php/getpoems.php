@@ -18,7 +18,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
-} 
+}
 
 $sql = "SELECT p1.id as id, p1.name as name, p2.name as poet_name FROM poems p1 join poets p2 on p1.poet_id = p2.id";
 $result = $conn->query($sql);
@@ -30,7 +30,7 @@ if ($result->num_rows > 0) {
     //echo "<option>בחר שיר</option>";
 
     while($row = mysqli_fetch_array($result))
-    { 
+    {
                       echo "<tr>";
                       echo "<td>";
                       echo "<a href='javascript:fetchPoemTab2(". $row['id'] . ",\"" . $row['name'] . "\");'>" . $row['name'] . " <small>(" . $row['poet_name'] . ")</small> </a>";
@@ -50,4 +50,3 @@ if ($result->num_rows > 0) {
 }
 $conn->close();
 ?>
-
