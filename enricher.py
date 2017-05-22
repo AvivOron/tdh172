@@ -4,7 +4,12 @@ import wikipedia
 import re
 import MySQLdb
 
-myDB = MySQLdb.connect(host="tdh.cmq2zbutzn8e.us-west-2.rds.amazonaws.com",port=3306,user="bialik",passwd="12345678",db="tdh172",charset='utf8')
+
+wikipedia.set_lang("he")
+print(wikipedia.page("חיים נחמן ביאליק").summary)
+
+
+"""myDB = MySQLdb.connect(host="tdh.cmq2zbutzn8e.us-west-2.rds.amazonaws.com",port=3306,user="bialik",passwd="12345678",db="tdh172",charset='utf8')
 cHandler = myDB.cursor()
 wikipedia.set_lang("he")
 cHandler.execute("SELECT id,name from poets")
@@ -65,4 +70,4 @@ for poet in poets:
 	except:
 		print("failed for " + str(poet_id))
 
-myDB.close()
+myDB.close()"""
