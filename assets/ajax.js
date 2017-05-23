@@ -209,6 +209,8 @@
         })
       }
 
+      var poets = [];
+
       function fetchPoets() {
         document.getElementById("spinner").style.visibility = "visible";
 
@@ -267,7 +269,6 @@
 
         });
 
-        var poets = [];
 
         var i = 0;
          $('#poets-table-body > tr > td > a').each( function(){
@@ -287,35 +288,55 @@
          
 
         // init timeline
-        google.charts.load("current", {packages:["timeline"]});
-        setTimeout(function(){ drawChart(); }, 3000);
+
         
 
-        function drawChart() {
-        var container = document.getElementById('example2.1');
-        var chart = new google.visualization.Timeline(container);
-        container.width = 300;
-        var dataTable = new google.visualization.DataTable();
-
-        dataTable.addColumn({ type: 'string', id: 'Term' });
-        dataTable.addColumn({ type: 'string', id: 'Name' });
-        dataTable.addColumn({ type: 'date', id: 'Start' });
-        dataTable.addColumn({ type: 'date', id: 'End' });
-
-        poets.forEach(function(poet) {
-           dataTable.addRow([  poet.term, poet.name, poet.birthDate, poet.deathDate ]);
-        });
-
-        chart.draw(dataTable);
-        }
 
       }       
     }   
   }
 
+  var chartLoaded = 0;
+  function drawChart() {
+    var container = document.getElementById('example2.1');
+    var chart = new google.visualization.Timeline(container);
+    container.width = 300;
+    var dataTable = new google.visualization.DataTable();
+
+    dataTable.addColumn({ type: 'string', id: 'Term' });
+    dataTable.addColumn({ type: 'string', id: 'Name' });
+    dataTable.addColumn({ type: 'date', id: 'Start' });
+    dataTable.addColumn({ type: 'date', id: 'End' });
+
+    poets.forEach(function(poet) {
+       dataTable.addRow([  poet.term, poet.name, poet.birthDate, poet.deathDate ]);
+    });
+
+    chart.draw(dataTable);
+  }
+
+
   function onLoad(){
       fetchPoets();
       fetchPoems();
+
+      document.getElementById("tl").onclick = function(){
+        if(chartLoaded == 0){
+            setTimeout(function() {
+            if(poets.length == 0){
+              setTimeout(function(){
+                google.charts.load("current", {packages:["timeline"]});
+                google.charts.setOnLoadCallback(drawChart);
+              },4000);
+            }
+            else{
+              google.charts.load("current", {packages:["timeline"]});
+              google.charts.setOnLoadCallback(drawChart);
+            }
+            chartLoaded = 1;
+          }, 1000);          
+        }
+      };
 
   }
 
