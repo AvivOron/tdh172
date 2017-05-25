@@ -1,0 +1,19 @@
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+#defaultView:BubbleChart
+SELECT (COUNT(?poet) AS ?count) ?genderLabel WHERE {
+  ?poet wdt:P106 wd:Q49757 .
+  ?poet wdt:P1412 wd:Q9288 .
+  ?poet wdt:P569 ?yearOfBirth .
+  ?poet wdt:P570 ?yearOfDeath . 
+  ?poet wdt:P19 ?placeOfBirth .
+  ?poet wdt:P20 ?placeOfDeath . 
+  ?placeOfDeath wdt:P625 ?loc .
+  ?poet wdt:P21 ?gender .
+
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "he,en". }
+  FILTER(?yearOfBirth >= "0800-01-01T00:00:00Z"^^xsd:dateTime)
+  FILTER(?yearOfBirth <= "2000-01-01T00:00:00Z"^^xsd:dateTime)
+}
+GROUP BY ?genderLabel
+
+http://tinyurl.com/mu7npum

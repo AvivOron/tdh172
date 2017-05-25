@@ -1,0 +1,19 @@
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+#defaultView:Map
+SELECT ?poetLabel ?loc WHERE {
+  ?poet wdt:P106 wd:Q49757 .
+  ?poet wdt:P1412 wd:Q9288 .
+  ?poet wdt:P569 ?yearOfBirth .
+  ?poet wdt:P570 ?yearOfDeath . 
+  ?poet wdt:P19 ?placeOfBirth .
+  ?poet wdt:P20 ?placeOfDeath . 
+  ?placeOfBirth wdt:P625 ?loc .
+
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "he,en". }
+  FILTER(?yearOfBirth >= "0800-01-01T00:00:00Z"^^xsd:dateTime)
+  FILTER(?yearOfBirth <= "2000-01-01T00:00:00Z"^^xsd:dateTime)
+}
+ORDER BY DESC(?poet)
+
+
+https://query.wikidata.org/embed.html#PREFIX%20xsd%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E%0A%23defaultView%3AMap%0ASELECT%20%3FpoetLabel%20%3Floc%20WHERE%20%7B%0A%20%20%3Fpoet%20wdt%3AP106%20wd%3AQ49757%20.%0A%20%20%3Fpoet%20wdt%3AP1412%20wd%3AQ9288%20.%0A%20%20%3Fpoet%20wdt%3AP569%20%3FyearOfBirth%20.%0A%20%20%3Fpoet%20wdt%3AP570%20%3FyearOfDeath%20.%20%0A%20%20%3Fpoet%20wdt%3AP19%20%3FplaceOfBirth%20.%0A%20%20%3Fpoet%20wdt%3AP20%20%3FplaceOfDeath%20.%20%0A%20%20%3FplaceOfBirth%20wdt%3AP625%20%3Floc%20.%0A%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22he%2Cen%22.%20%7D%0A%20%20FILTER(%3FyearOfBirth%20%3E%3D%20%220800-01-01T00%3A00%3A00Z%22%5E%5Exsd%3AdateTime)%0A%20%20FILTER(%3FyearOfBirth%20%3C%3D%20%222000-01-01T00%3A00%3A00Z%22%5E%5Exsd%3AdateTime)%0A%7D%0AORDER%20BY%20DESC(%3Fpoet)
