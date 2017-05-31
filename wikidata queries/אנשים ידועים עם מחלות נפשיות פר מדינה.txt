@@ -1,0 +1,14 @@
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?ctzLabel (COUNT(?dis) AS ?count)
+WHERE {
+	
+  ?person wdt:P1050/wdt:P279* wd:Q12135 .
+  ?person wdt:P1050 ?dis .
+  ?person wdt:P27 ?ctz .
+
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}
+GROUP BY (?ctzLabel)
+order by DESC(?count)
+
+http://tinyurl.com/mqhvzgt

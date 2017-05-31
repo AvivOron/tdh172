@@ -27,7 +27,7 @@
   </div>
 </div>
 
-<nav class="navbar navbar-inverse" >
+<nav class="navbar navbar-inverse" style="margin-bottom: 25px" >
   <div class="container-fluid" style="margin-right:-40px">
     <div class="navbar-header">
     </div>
@@ -36,8 +36,10 @@
         <li class="active" id="nabThumb"><a data-toggle="tab" href="#home">דף הבית</a></li>  
         <li id="nabThumb"><a data-toggle="tab" href="#menu1">חיפוש עפ"י משורר</a></li>
         <li id="nabThumb"><a data-toggle="tab" href="#menu2">חיפוש עפ"י שם השיר</a></li> 
-        <li id="nabThumb"><a id="tl" data-toggle="tab" href="#menu3">ציר זמן</a></li> 
-        <li id="nabThumb"><a data-toggle="tab" href="#menu4">תהליך הפיתוח</a></li> 
+        <li id="nabThumb"><a data-toggle="tab" href="#menu4">הכר את המשורר</a></li> 
+        <li id="nabThumb"><a id="tl" data-toggle="tab" href="#menu5">נתוני המאגר</a></li> 
+        <li id="nabThumb"><a data-toggle="tab" href="#menu6">תהליך הפיתוח</a></li> 
+
 
 
 
@@ -52,7 +54,7 @@
     כחלק מהקורס בו אנו לוקחים חלק, "מדעי הרוח הדיגיטליים" באוניברסיטת בן-גוריון בנגב,<br>
     בחרנו לממש פרוייקט אשר ינגיש לקהילת העיוורים וכבדי הראייה בישראל את מאגר<br>
     השירה העברית של פרוייקט <a href="http://benyehuda.org/">בן-יהודה</a> בתרגום לכתב ברייל.<br><br>
-    <b>אנו מקווים כי בפרוייקט זה, הקלנו במידה מסויימת על האתגרים היום יומיים של קהילת העיוורים וכבדי הראייה בישראל.<br><br><br><br><br></b>
+    <b>אנו מקווים כי בפרוייקט זה, הקלנו במידה מסויימת על האתגרים היום יומיים של קהילת העיוורים וכבדי הראייה בישראל.<br><br><br></b>
     <small>תודה לפרוייקט <a href="http://benyehuda.org/">בן יהודה</a> אשר המיר את התכנים לפורמט דיגיטלי ואיפשר לנו לממש פרוייקט זה.</small>
   </div>
 
@@ -230,11 +232,37 @@
         </div>
       </div>
 
-      <div dir="rtl" align="right" style="margin-right:20px" id="menu3" class="tab-pane fade">
+      <!--<div dir="rtl" align="right" style="margin-right:20px" id="menu3" class="tab-pane fade">
             <div id="example2.1" style="height: 400px">טוען...</div>
+      </div>-->
+
+      <div dir="rtl" align="right" style="margin-right:20px" id="menu5" class="tab-pane fade">
+
+        <table>
+        <tr id="spinnerTab4"><td>
+          <div style="float:right;width:100px;" class="container" >
+            <div class="loader" style="height:20px;width:20px;"></div>
+          </div>
+        </td></tr>
+        <tr><td>
+          <ul id="stat" style="visibility: hidden;">
+          <li>
+            <b>משוררים</b><br>כמות המשוררים אשר מונה המאגר הינה <span id="numOfPoets"></span> משוררים עבריים.<br>
+            להורדת רשימת שמות כל המשוררים <a href="javascript:downloadList('poetsList');">לחץ כאן</a>.
+          </li><br>
+          <li>
+            <b>שירים</b><br>כמות השירים אשר מונה המאגר הינה <span id="numOfPoems"></span> שירים.<br>
+            להורדת רשימת שמות כל השירים <a href="javascript:downloadList('poemsList');">לחץ כאן</a>.
+          </li>
+        </ul>
+        </td>
+        </tr>
+        </table>
+        
       </div>
 
-      <div dir="rtl" align="right" style="margin-right:20px" id="menu4" class="tab-pane fade">
+
+      <div dir="rtl" align="right" style="margin-right:20px" id="menu6" class="tab-pane fade">
         <ol class="ordlist">
           <li class="linum">
             <b>פיתוח סקריפט איחזור</b>
@@ -275,10 +303,59 @@
 
       </div>
 
+
+
+      <div dir="rtl" align="right" style="margin-right:20px" id="menu4" class="tab-pane fade">
+      <div align="center">במסך זה ניתן לצפות בנתוני תהליך מיצוי המידע אודות המשוררים הממופים במאגר.<br>
+      ניתן לגלול ימינה\שמאלה לשאילתות נוספות.<br><br></div>
+        <div id="myCarousel" class="carousel slide" data-ride="carousel" height="500" data-interval="false">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+          <div class="item active" style="height:370px;text-align: center">
+            <b>פיזור המשוררים העבריים על מפת העולם על פי מקום לידתם<br></b  >
+            <iframe style="width:60vw; height:50vh;" frameborder="0" src="https://query.wikidata.org/embed.html#PREFIX%20xsd%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E%0A%23defaultView%3AMap%0ASELECT%20%3FpoetLabel%20%3Floc%20WHERE%20%7B%0A%20%20%3Fpoet%20wdt%3AP106%20wd%3AQ49757%20.%0A%20%20%3Fpoet%20wdt%3AP1412%20wd%3AQ9288%20.%0A%20%20%3Fpoet%20wdt%3AP569%20%3FyearOfBirth%20.%0A%20%20%3Fpoet%20wdt%3AP570%20%3FyearOfDeath%20.%20%0A%20%20%3Fpoet%20wdt%3AP19%20%3FplaceOfBirth%20.%0A%20%20%3Fpoet%20wdt%3AP20%20%3FplaceOfDeath%20.%20%0A%20%20%3FplaceOfBirth%20wdt%3AP625%20%3Floc%20.%0A%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22he%2Cen%22.%20%7D%0A%20%20FILTER%28%3FyearOfBirth%20%3E%3D%20%220800-01-01T00%3A00%3A00Z%22%5E%5Exsd%3AdateTime%29%0A%20%20FILTER%28%3FyearOfBirth%20%3C%3D%20%222000-01-01T00%3A00%3A00Z%22%5E%5Exsd%3AdateTime%29%0A%7D%0AORDER%20BY%20DESC%28%3Fpoet%29"></iframe>
+          </div>
+
+          <div class="item" style="height:370px;text-align: center">
+            <b>הפנים שמאחורי השירים<br></b  >
+            <iframe style="width:60vw; height:50vh;" frameborder="0" src="https://query.wikidata.org/embed.html#PREFIX%20xsd%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E%0A%23defaultView%3AImageGrid%0ASELECT%20%3FpoetLabel%20%3Fpicture%20WHERE%20%7B%0A%20%20%3Fpoet%20wdt%3AP106%20wd%3AQ49757%20.%0A%20%20%3Fpoet%20wdt%3AP1412%20wd%3AQ9288%20.%0A%20%20%3Fpoet%20wdt%3AP569%20%3FyearOfBirth%20.%0A%20%20%3Fpoet%20wdt%3AP570%20%3FyearOfDeath%20.%20%0A%20%20%3Fpoet%20wdt%3AP19%20%3FplaceOfBirth%20.%0A%20%20%3Fpoet%20wdt%3AP20%20%3FplaceOfDeath%20.%20%0A%20%20%3FplaceOfDeath%20wdt%3AP625%20%3Floc%20.%0A%20%20%3Fpoet%20wdt%3AP18%20%3Fpicture%20.%0A%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22he%2Cen%22.%20%7D%0A%20%20FILTER%28%3FyearOfBirth%20%3E%3D%20%220800-01-01T00%3A00%3A00Z%22%5E%5Exsd%3AdateTime%29%0A%20%20FILTER%28%3FyearOfBirth%20%3C%3D%20%222000-01-01T00%3A00%3A00Z%22%5E%5Exsd%3AdateTime%29%0A%7D%0AORDER%20BY%20DESC%28%3Fpoet%29"></iframe>
+          </div>
+
+          <div class="item" style="height:370px;text-align: center">
+            <b>חלוקת המשוררים העבריים על ציר זמן על פי שנת לידה (Pinch to zoom-in)<br></b  >
+            <iframe style="width:60vw; height:50vh;" frameborder="0" src="https://query.wikidata.org/embed.html#PREFIX%20xsd%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E%0A%23defaultView%3ATimeline%0ASELECT%20%3FpoetLabel%20%3FyearOfBirth%20WHERE%20%7B%0A%20%20%3Fpoet%20wdt%3AP106%20wd%3AQ49757%20.%0A%20%20%3Fpoet%20wdt%3AP1412%20wd%3AQ9288%20.%0A%20%20%3Fpoet%20wdt%3AP569%20%3FyearOfBirth%20.%0A%20%20%3Fpoet%20wdt%3AP570%20%3FyearOfDeath%20.%20%0A%20%20%3Fpoet%20wdt%3AP19%20%3FplaceOfBirth%20.%0A%20%20%3Fpoet%20wdt%3AP20%20%3FplaceOfDeath%20.%20%0A%20%20%3FplaceOfDeath%20wdt%3AP625%20%3Floc%20.%0A%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22he%2Cen%22.%20%7D%0A%20%20FILTER%28%3FyearOfBirth%20%3E%3D%20%220800-01-01T00%3A00%3A00Z%22%5E%5Exsd%3AdateTime%29%0A%20%20FILTER%28%3FyearOfBirth%20%3C%3D%20%222000-01-01T00%3A00%3A00Z%22%5E%5Exsd%3AdateTime%29%0A%7D%0AORDER%20BY%20DESC%28%3Fpoet%29"></iframe>
+          </div>
+
+        </div>
+
+        
+
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+
+      </div>
+
     </div>
 
     <div style="visibility: hidden" id="poemName"></div>
     <div style="visibility: hidden" id="poemNameTab2"></div>
+    <div style="visibility: hidden" id="poetsList"></div>
+    <div style="visibility: hidden" id="poemsList"></div>
 
 <br><br>
 
