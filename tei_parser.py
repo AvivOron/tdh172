@@ -10,12 +10,12 @@ import collections
 
 #sys.stdout = codecs.getwriter('utf-8')(sys.stdout.buffer, 'strict')
 
-print('hello, Yul')
+# print('hello, Yul')
 
 
 myDB = MySQLdb.connect(host="tdh.cmq2zbutzn8e.us-west-2.rds.amazonaws.com",port=3306,user="bialik",passwd="12345678",db="tdh172",charset='utf8')
 cHandler = myDB.cursor()
-cHandler.execute("SELECT poems.name,original_data,wikipedia_name,poems.id, year_of_birth, year_of_death from poems JOIN poets ON poet_id = poets.id LIMIT 1")
+cHandler.execute("SELECT poems.name,original_data,wikipedia_name,poems.id, year_of_birth, year_of_death from poems JOIN poets ON poet_id = poets.id")
 poems_data = cHandler.fetchall()
 
 for poem in poems_data:
@@ -67,13 +67,10 @@ for poem in poems_data:
 
 	# cHandler.execute("UPDATE poems set tei=tei_file where id=poem_id;")
 	# myDB.commit()
-	with open(r"C:\temp\example2.tei", "w", encoding='utf-8') as f:
-		f.write(tei_file)
+	# with open(r"C:\temp\example2.tei", "w", encoding='utf-8') as f:
+	# 	f.write(tei_file)
 	
 	#print(cleanNikudFromString(cleanSpecialCharsFromString(poem[1])))
 
 
-
-# with open(r"C:\temp\example2.tei", "w", encoding='utf-8') as f:
-# 	f.write(tei_file)
 myDB.close()
