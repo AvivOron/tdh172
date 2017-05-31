@@ -62,10 +62,17 @@
           success: function(data){
             document.getElementById("poems-table-body-tab2").innerHTML = data;
             document.getElementById("spinner-tab2").style.visibility = "hidden";
+            document.getElementById("spinnerTab4").style.visibility = "collapse";
+            document.getElementById("stat").style.visibility = "visible";
             document.getElementById("autocomplete").placeholder = "";
             document.getElementById("autocomplete").disabled = false;
             var tags = $('#poems-table-body-tab2 > tr > td > a').toArray();
 
+
+
+            document.getElementById("numOfPoems").innerHTML = tags.length;
+
+            var poemsListStr = "";
 
             for (var i = 0, len = tags.length; i < len; i++) {
               var res = tags[i].toString().substring(25, tags[i].length);
@@ -73,7 +80,10 @@
               var id = resArr[0];
               var name = resArr[1].substring(1,resArr[1].length-3).replace("  ", " ");
               tags[i] = {label: decodeURIComponent(name), value: id};
+              poemsListStr += decodeURIComponent(name) + "\n";
             }
+
+           document.getElementById("poemsList").innerHTML = poemsListStr;    
 
 
             $( "#autocomplete" ).autocomplete({
@@ -271,6 +281,7 @@
 
 
         var i = 0;
+        var poetsListStr = "";
          $('#poets-table-body > tr > td > a').each( function(){
               line = $(this).text();
               if(line[line.length-1] == ')'){ 
@@ -281,16 +292,14 @@
                 dateOfBirth = dateParts[0];
                 dateOfDeath = dateParts[1];
                 poets.push({ term: i.toString(), name: name, birthDate: new Date(parseInt(dateOfBirth), 1, 1), deathDate: new Date(parseInt(dateOfDeath), 1, 1) });
+                poetsListStr += name + "\n";
                 i +=1;
               }
           });
 
-         
-
-        // init timeline
-
-        
-
+         document.getElementById("numOfPoets").innerHTML = poets.length; 
+         document.getElementById("poetsList").innerHTML = poetsListStr;    
+   
 
       }       
     }   
@@ -320,7 +329,7 @@
       fetchPoets();
       fetchPoems();
 
-      document.getElementById("tl").onclick = function(){
+      /*document.getElementById("tl").onclick = function(){
         if(chartLoaded == 0){
             setTimeout(function() {
             if(poets.length == 0){
@@ -336,7 +345,7 @@
             chartLoaded = 1;
           }, 1000);          
         }
-      };
+      };*/
 
   }
 
@@ -402,6 +411,36 @@
     }, 0); 
   }
 
+  function downloadList(src) {
 
+    data = new Blob([
+  new Uint8Array([0xEF, 0xBB, 0xBF]), // UTF-8 BOM
+  document.getElementById(src).innerHTML.replace(/\n/g, "\r\n").replace(/&nbsp;/g, ' ')
+
+  ],
+  { type: "text/plain;charset=utf-8" });
+
+    var a = document.createElement("a"),
+    url = URL.createObjectURL(data);
+    a.href = url;
+    a.download = generateUID() + ".txt";
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function() {
+      document.body.removeChild(a);
+      window.URL.revokeObjectURL(url);  
+    }, 0); 
+  }
+
+
+function generateUID() {
+    // I generate the UID from two parts here 
+    // to ensure the random number provide enough bits.
+    var firstPart = (Math.random() * 46656) | 0;
+    var secondPart = (Math.random() * 46656) | 0;
+    firstPart = ("000" + firstPart.toString(36)).slice(-3);
+    secondPart = ("000" + secondPart.toString(36)).slice(-3);
+    return firstPart + secondPart;
+}
 
 

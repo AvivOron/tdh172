@@ -29,13 +29,15 @@ if ($result->num_rows > 0) {
 
     while($row = mysqli_fetch_array($result))
     { 
-    //echo "<option value=" . $row['id'] . ">" . $row['name'] . "</option>";
                       echo "<tr>";
                       echo "<td>";
+                      echo "<a href='javascript:fetchPoemsByPoet(". $row['id'] . ");'";
+                      if( $row['summary'])
+                        echo " data-toggle='tooltip' title='" . str_replace("'", "\"", $row['summary']) . "' ";
+                      echo">" . $row['name'];
                       if( $row['year_of_birth'] > 0 and  $row['year_of_death'] >0)
-                        echo "<a href='javascript:fetchPoemsByPoet(". $row['id'] . ");'>" . $row['name'] . "<small> (" . $row['year_of_birth'] . "-" . $row['year_of_death'] . ")</small></a> ";
-                      else
-                        echo "<a href='javascript:fetchPoemsByPoet(". $row['id'] . ");'>" . $row['name'] . "</a> ";
+                        echo "<small> (" . $row['year_of_birth'] . "-" . $row['year_of_death'] . ")</small>";
+                      echo "</a> ";
                       echo "</td>";
                       echo "</tr>";
     }
