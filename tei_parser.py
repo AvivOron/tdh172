@@ -6,14 +6,13 @@ import unicodedata
 import dicttoxml
 import collections
 
-#sys.stdout = codecs.getwriter('utf-8')(sys.stdout.buffer, 'strict')
 
 print('hello, Yul')
 
 
 myDB = MySQLdb.connect(host="tdh.cmq2zbutzn8e.us-west-2.rds.amazonaws.com",port=3306,user="bialik",passwd="12345678",db="tdh172",charset='utf8')
 cHandler = myDB.cursor()
-cHandler.execute("SELECT poems.name,original_data,wikipedia_name,poems.id, year_of_birth, year_of_death from poems JOIN poets ON poet_id = poets.id LIMIT 3")
+cHandler.execute("SELECT poems.name,original_data,wikipedia_name,poems.id, year_of_birth, year_of_death from poems JOIN poets ON poet_id = poets.id LIMIT 1")
 poems_data = cHandler.fetchall()
 
 for poem in poems_data:
@@ -57,7 +56,7 @@ for poem in poems_data:
 	tei_file = tei_file.replace('<lg >', '<lg type="stanza">')
 	tei_file = tei_file.replace('<body>', '<body xml:id="d2">')
 	tei_file = tei_file.replace('<text>', '<text xml:id="d1">')
-	tei_file = tei_file.replace('<div1>', '<div1 type="poem" xml:id="d3">')
+	tei_file = tei_file.replace('<div1>', '<div1 type="poem" xml:id='+'"'+poet_name+'.'+str(poem_id)+'">')
 	tei_file = tei_file.replace('<paragraphs>', '')
 	tei_file = tei_file.replace('</paragraphs>', '')
 
