@@ -18,7 +18,7 @@ dict = {'א':'⠁','ב':'⠃','ג':'⠛','ד':'⠙','ה':'⠓','ו':'⠺','ז':'
 specialChars = {'/':' ','"':'\'','\\':' ','.':' ','*':' ','?':' ',':':' ',\
     '\r\n':' ','\n':' ','\r':' ','\t':' '}
 
-sentencedToRemove = ['להאזנה לשיר','להאזנה  לשיר,' ,	'לדף הראשי', 'לתוכן  הענינים', 'לתוכן הענינים', 'לתוכן הענינים']
+sentencedToRemove = ['להאזנה לשיר','להאזנה  לשיר,' ,	'לדף הראשי', 'לתוכן  הענינים', 'לתוכן הענינים', 'לתוכן הענינים' , '©', 'כל הזכויות']
 
 def ifSentenceToRemoveAppears(str):
 	for s in sentencedToRemove:
@@ -86,7 +86,8 @@ for artistLink in artistsLinks:
 		cHandler.execute("SELECT id from poets where name=%s; ", [parsedName])
 		poetID = cHandler.fetchall()[0][0]
 		print(poetID)
-		
+		if(poetID < 78):
+			continue
 
 		sauce = urllib.request.urlopen(link).read()
 		soup = bs.BeautifulSoup(sauce, "lxml")
@@ -141,12 +142,13 @@ for artistLink in artistsLinks:
 					print ("couldnt open " + songName + " " + str(e))
 					print ('Error on line {}'.format(sys.exc_info()[-1].tb_lineno))
 					pass
-		5
+		
 
 
 	except Exception as e: 
 		print ("couldnt open " + str(englishName) + " " + str(e))
 		print ('Error on line {}'.format(sys.exc_info()[-1].tb_lineno))
-		break
+		pass
+		
 
 myDB.close()

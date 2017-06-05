@@ -34,15 +34,15 @@ if ($result->num_rows > 0) {
     while($row = mysqli_fetch_array($result))
     {
     if(strlen($row['url']) > 0){
-      echo "<tr><td><b>" .  $row['name'] . " \ " . $row['poet_name'] . "</b></td><td style='padding-right:20px'>למידע נוסף אודות המשורר\ת <a target='_blank' href='" .  $row['url'] . "'>לחצ\י כאן</a><br></td></tr>";
+      echo "<tr><td><b>" .  $row['name'] . " \ " . $row['poet_name'] . "</b></td><td style='padding-right:20px;text-align:left;'>למידע נוסף אודות המשורר\ת <a target='_blank' href='" .  $row['url'] . "'>לחצ\י כאן</a><br></td></tr>";
     }
     else{
       echo "<tr><td><b>" .  $row['name'] . " \ " . $row['poet_name'] . "</b></td><td style='padding-right:20px'><br></td></tr>";
     }
     echo "<tr><td><br></td></tr>";
     echo "<tr>" ;
-    echo "<td><div id='$dest1'>" . $row['original_data'] . "</div></td>";
-    echo "<td style='padding-right:20px'><div id='$dest2'>" . $row['translated_data'] . "</div></td>";
+    echo "<td style='vertical-align:top;'><div id='$dest1'>" . $row['original_data'] . "</div></td>";
+    echo "<td style='padding-right:10px;'><div id='$dest2' style='text-align:left;'>" . $row['translated_data'] . "</div></td>";
     echo "</tr>" ;
     }
 
