@@ -7,16 +7,16 @@
         $.ajax({
           type: "POST",
           url: "./php/getpoem.php",
-          data:{ poemID: poem_id, dest1: "originalText", dest2: "braileText" }, 
-          success: function(data){ 
+          data:{ poemID: poem_id, dest1: "originalText", dest2: "braileText" },
+          success: function(data){
             var a = "<a href='javascript:printBraileText(\"braileText\");'>הדפסה</a> \\ <a href='javascript:makeTextFile(\"" +
-            document.getElementById("poemName").innerHTML + "\",\"originalText\");'>שמירת טקסט עברי לקובץ</a> \\  <a href='javascript:makeBraileFile(\"" + 
+            document.getElementById("poemName").innerHTML + "\",\"originalText\");'>שמירת טקסט עברי לקובץ</a> \\  <a href='javascript:makeBraileFile(\"" +
             document.getElementById("poemName").innerHTML + "\",\"braileText\");'>שמירת טקסט ברייל לקובץ</a><br><br>";
             document.getElementById("actions").innerHTML= a;
             document.getElementById("poem").innerHTML = data;
             document.getElementById("left_spinner").style.visibility = "hidden";
             document.getElementById("poets").disabled = false;
-            document.getElementById("poems").disabled = false; 
+            document.getElementById("poems").disabled = false;
 
           }
         })
@@ -31,10 +31,10 @@
         $.ajax({
           type: "POST",
           url: "./php/getpoem.php",
-          data:{ poemID: poem_id, dest1: "originalTextTab2", dest2: "braileTextTab2" }, 
-          success: function(data){ 
+          data:{ poemID: poem_id, dest1: "originalTextTab2", dest2: "braileTextTab2" },
+          success: function(data){
             var a = "<a href='javascript:printBraileText(\"braileTextTab2\");'>הדפסה</a> \\ <a href='javascript:makeTextFile(\"" +
-            document.getElementById("poemNameTab2").innerHTML + "\",\"originalTextTab2\");'>שמירת טקסט עברי לקובץ</a> \\  <a href='javascript:makeBraileFile(\"" + 
+            document.getElementById("poemNameTab2").innerHTML + "\",\"originalTextTab2\");'>שמירת טקסט עברי לקובץ</a> \\  <a href='javascript:makeBraileFile(\"" +
             document.getElementById("poemNameTab2").innerHTML + "\",\"braileTextTab2\");'>שמירת טקסט ברייל לקובץ</a><br><br>";
             document.getElementById("actions-tab2").innerHTML = a;
             document.getElementById("poem-tab2").innerHTML = data;
@@ -49,16 +49,16 @@
       /////
 
       function fetchPoems() {
-        document.getElementById("poem-tab2").innerHTML = ""; 
-        document.getElementById("actions-tab2").innerHTML = "";  
-        document.getElementById("poems-table-body-tab2").innerHTML = ""; 
+        document.getElementById("poem-tab2").innerHTML = "";
+        document.getElementById("actions-tab2").innerHTML = "";
+        document.getElementById("poems-table-body-tab2").innerHTML = "";
         document.getElementById("spinner-tab2").style.visibility = "visible";
-        
+
 
         $.ajax({
           type: "POST",
           url: "./php/getpoems.php",
-          
+
           success: function(data){
             document.getElementById("poems-table-body-tab2").innerHTML = data;
             document.getElementById("spinner-tab2").style.visibility = "hidden";
@@ -83,12 +83,14 @@
               poemsListStr += decodeURIComponent(name) + "\n";
             }
 
-           document.getElementById("poemsList").innerHTML = poemsListStr;    
+           document.getElementById("poemsListt").innerHTML = poemsListStr;
+           document.getElementById("poemsListt").style.display = "none";
+
 
 
             $( "#autocomplete" ).autocomplete({
               source: tags,
-                  select: function( event, ui ) { 
+                  select: function( event, ui ) {
                       $( "#autocomplete" ).val(ui.item.label);
                       fetchPoemTab2(ui.item.value, ui.item.label);
                       event.preventDefault();
@@ -118,7 +120,7 @@
 
 
         $(function () {
-            var _poems = $('#poems-table-body-tab2 > tr > td > a'); 
+            var _poems = $('#poems-table-body-tab2 > tr > td > a');
 
             _poems.click(function () {
               var _poem = $(this), _text = $(this).text(), _count = 0;
@@ -165,8 +167,8 @@
 
       function fetchPoemsByPoet(poet_id) {
         document.getElementById("actions").innerHTML = "";
-        document.getElementById("poem").innerHTML = ""; 
-        document.getElementById("poems-table-body").innerHTML = ""; 
+        document.getElementById("poem").innerHTML = "";
+        document.getElementById("poems-table-body").innerHTML = "";
 
         document.getElementById("spinner").style.visibility = "visible";
 
@@ -174,14 +176,14 @@
         $.ajax({
           type: "POST",
           url: "./php/getpoemsbypoet.php",
-          data:{ poetID: poet_id }, 
+          data:{ poetID: poet_id },
           success: function(data){
             document.getElementById("poems-table-body").innerHTML = data;
             document.getElementById("spinner").style.visibility = "hidden";
 
 
         $(function () {
-            var _poets = $('#poems-table-body > tr > td > a'); 
+            var _poets = $('#poems-table-body > tr > td > a');
 
             _poets.click(function () {
               var _poet = $(this), _text = $(this).text(), _count = 0;
@@ -231,17 +233,17 @@
     //below will "assign HotelArea to $_POST['SearchValue']"
     //data.append('SearchValue',HotelArea);
     xhttp.open('POST',url,true);
-    xhttp.setRequestHeader("Content-Type", "text/plain;charset=UTF-8"); 
+    xhttp.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
     xhttp.send(data);
-    
-    xhttp.onreadystatechange = function() { 
-      if(xhttp.readyState == 4 && xhttp.status == 200) {  
+
+    xhttp.onreadystatechange = function() {
+      if(xhttp.readyState == 4 && xhttp.status == 200) {
         document.getElementById("poets-table-body").innerHTML = xhttp.responseText;
         document.getElementById("spinner").style.visibility = "hidden";
 
         $(function () {
-            var _poets = $('#poets-table-body > tr > td > a'); 
-            var _alphabets_poems = $('.alphabet_poems > a');    
+            var _poets = $('#poets-table-body > tr > td > a');
+            var _alphabets_poems = $('.alphabet_poems > a');
 
             _poets.click(function () {
               var _poet = $(this), _text = $(this).text(), _count = 0;
@@ -284,7 +286,7 @@
         var poetsListStr = "";
          $('#poets-table-body > tr > td > a').each( function(){
               line = $(this).text();
-              if(line[line.length-1] == ')'){ 
+              if(line[line.length-1] == ')'){
                 lastP = line.lastIndexOf("(");
                 name = line.substring(0,lastP-1);
                 date = line.substring(lastP+1,line.length-1);
@@ -297,12 +299,12 @@
               }
           });
 
-         document.getElementById("numOfPoets").innerHTML = poets.length; 
-         document.getElementById("poetsList").innerHTML = poetsListStr;    
-   
+         document.getElementById("numOfPoets").innerHTML = poets.length;
+         document.getElementById("poetsList").innerHTML = poetsListStr;
 
-      }       
-    }   
+
+      }
+    }
   }
 
   var chartLoaded = 0;
@@ -343,7 +345,7 @@
               google.charts.setOnLoadCallback(drawChart);
             }
             chartLoaded = 1;
-          }, 1000);          
+          }, 1000);
         }
       };*/
 
@@ -384,8 +386,8 @@
     a.click();
     setTimeout(function() {
       document.body.removeChild(a);
-      window.URL.revokeObjectURL(url);  
-    }, 0); 
+      window.URL.revokeObjectURL(url);
+    }, 0);
   }
 
   function makeBraileFile(poemName, textSource) {
@@ -407,8 +409,8 @@
     a.click();
     setTimeout(function() {
       document.body.removeChild(a);
-      window.URL.revokeObjectURL(url);  
-    }, 0); 
+      window.URL.revokeObjectURL(url);
+    }, 0);
   }
 
   function downloadList(src) {
@@ -428,13 +430,13 @@
     a.click();
     setTimeout(function() {
       document.body.removeChild(a);
-      window.URL.revokeObjectURL(url);  
-    }, 0); 
+      window.URL.revokeObjectURL(url);
+    }, 0);
   }
 
 
 function generateUID() {
-    // I generate the UID from two parts here 
+    // I generate the UID from two parts here
     // to ensure the random number provide enough bits.
     var firstPart = (Math.random() * 46656) | 0;
     var secondPart = (Math.random() * 46656) | 0;
@@ -442,5 +444,3 @@ function generateUID() {
     secondPart = ("000" + secondPart.toString(36)).slice(-3);
     return firstPart + secondPart;
 }
-
-
