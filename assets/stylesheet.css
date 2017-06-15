@@ -1,3 +1,6 @@
+html, body{
+  height: 100%;
+}
 .container {
   width: @container-desktop !important;
 }
@@ -34,7 +37,6 @@
 }
 
 #poets {
-  width: 650px;
   background: white;
 }
 
@@ -142,8 +144,8 @@
 
 .scrollable{
 overflow-y: auto;
-height: 20rem;
-width: 30rem;
+height: 350px;
+width: 350px;
 }
 
 .simple::-webkit-scrollbar {
