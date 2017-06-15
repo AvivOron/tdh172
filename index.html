@@ -22,7 +22,7 @@
   background-repeat:   no-repeat;
   background-position: center center;">
   <div class="container text-center">
-    <h1>שירה עברית בברייל</h1>      
+    <h1>שירה עברית בברייל</h1>
     <p>מייקי נגלר, איילת קלדרון ואביב אורון</p>
   </div>
 </div>
@@ -33,12 +33,12 @@
     </div>
     <div id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li class="active" id="nabThumb"><a data-toggle="tab" href="#home">דף הבית</a></li>  
+        <li class="active" id="nabThumb"><a data-toggle="tab" href="#home">דף הבית</a></li>
         <li id="nabThumb"><a data-toggle="tab" href="#menu1">חיפוש עפ"י משורר</a></li>
-        <li id="nabThumb"><a data-toggle="tab" href="#menu2">חיפוש עפ"י שם השיר</a></li> 
-        <li id="nabThumb"><a data-toggle="tab" href="#menu4">הכר את המשורר</a></li> 
-        <li id="nabThumb"><a id="tl" data-toggle="tab" href="#menu5">נתוני המאגר</a></li> 
-        <li id="nabThumb"><a data-toggle="tab" href="#menu6">תהליך הפיתוח</a></li> 
+        <li id="nabThumb"><a data-toggle="tab" href="#menu2">חיפוש עפ"י שם השיר</a></li>
+        <li id="nabThumb"><a data-toggle="tab" href="#menu4">הכר את המשורר</a></li>
+        <li id="nabThumb"><a id="tl" data-toggle="tab" href="#menu5">נתוני המאגר</a></li>
+        <li id="nabThumb"><a data-toggle="tab" href="#menu6">תהליך הפיתוח</a></li>
 
 
 
@@ -64,7 +64,7 @@
             <div id="poets" disabled="true" style="visibility: hidden;">
 
             </div>
-          </tr> 
+          </tr>
           <tr id="poemsList" style="height:40px">
             <div id="poems" style="visibility:hidden;">
 
@@ -80,7 +80,7 @@
         <div id="poem" style="white-space: pre-wrap;">
           <td><div id="originalText"></div></td><td><div id="braileText"></div></td>
         </div>-->
-        <div id="artist_list"> 
+        <div id="artist_list">
           <div class="alphabet">
             <a class="first" href="#">א</a>
             <a href="#">ב</a>
@@ -105,7 +105,7 @@
             <a href="#">ש</a>
             <a href="#">ת</a>
           </div><br>
-          <div id="poets">
+          <div id="poets" class="scrollable simple">
             <table id="poets-table">
               <tbody id="poets-table-body" class="poetsList">
               <tr><td><div id="spinner" style="visibility: hidden" class="container" >
@@ -141,19 +141,16 @@
               <a href="#">ש</a>
               <a href="#">ת</a>
             </div><br>
-            <div id="poems">
+            <div id="poems" class="scrollable simple">
               <table id="poems-table">
                 <tbody id="poems-table-body" class="poemsList">
                 </tbody>
               </table>
             </div>
-
             <br>
-
             <div id="spinner" style="visibility: visible;float:right;width:100px;" class="container" >
               <div class="loader" style="height:20px;width:20px;"></div>
-            </div> 
-
+            </div>
           </div>
         </div>
         <div style="float:right">
@@ -162,7 +159,7 @@
             <table id="poem" style="max-width:660px;white-space: pre-wrap;"><tr><td><div id="originalText"></div></td><td><div id="braileText"></div></td></tr></table>
             <div id="left_spinner" style="visibility: hidden;float:right;width:100px;" class="container" >
               <div class="loader" style="height:20px;width:20px;"></div>
-            </div> 
+            </div>
           </div>
 
         </div>
@@ -173,10 +170,10 @@
 
 
       <div dir="rtl" style="margin-right:20px" id="menu2" class="tab-pane fade">
-        
 
-         <div style="float:right;width:500px"> 
-        
+
+         <div style="float:right;width:500px">
+
 
           <div id="poemsSection">
           <table><tr><td width=110>חיפוש שיר במאגר</td><td><input id="autocomplete" disabled="true" placeholder="טוען..."></td></tr>
@@ -205,7 +202,7 @@
               <a href="#">ש</a>
               <a href="#">ת</a>
             </div><br>
-            <div id="poems-tab2" style="max-width: 660px">
+            <div id="poems-tab2" style="max-width: 660px" class="scrollable simple">
               <table id="poems-table-tab2">
                 <tbody id="poems-table-body-tab2" class="poemsList">
                 </tbody>
@@ -216,7 +213,7 @@
 
             <div id="spinner-tab2" style="visibility: visible;float:right;width:100px;" class="container" >
               <div class="loader" style="height:20px;width:20px;"></div>
-            </div> 
+            </div>
 
           </div>
         </div>
@@ -226,7 +223,7 @@
             <table id="poem-tab2" style="white-space: pre-wrap;"><tr><td><div id="originalTextTab2"></div></td><td><div id="braileTextTab2"></div></td></tr></table>
             <div id="left_spinner_tab2" style="visibility: hidden;float:right;width:100px;" class="container" >
               <div class="loader" style="height:20px;width:20px;"></div>
-            </div> 
+            </div>
           </div>
 
         </div>
@@ -258,7 +255,7 @@
         </td>
         </tr>
         </table>
-        
+
       </div>
 
 
@@ -294,7 +291,7 @@
             <ol class="ordlist">
               <li class="linum">כתיבת סקריפט <b>Python</b> אשר עבור כל משורר ממסד הנתונים, יאתר ערך Wikipedia מתאים עפ"י חיפוש מספר התאמות מירבי של שיריו בדף הערך הנבחן.</li>
               <li class="linum">לאחר מציאת הדפים הרלוונטיים (בדיקה אנושית), שליפת שנות לידה ופטירה ותקציר חייו של המשורר ושמירת כל הערכים לטבלת המשוררים במסד הנתונים.</li>
-              <li class="linum">שליפת שנות לידה ופטירה משופרת באמצעות <b>OpenRefine</b> ומאגר <b>VIAF</b> ושמירת הנתונים למסד הנתונים.</li>  
+              <li class="linum">שליפת שנות לידה ופטירה משופרת באמצעות <b>OpenRefine</b> ומאגר <b>VIAF</b> ושמירת הנתונים למסד הנתונים.</li>
               <li class="linum">עבודה עם ספריית פייתון חיצונית להתממשקות מול Wikipedia.</li>
             </ol>
           </li>
@@ -335,7 +332,7 @@
 
         </div>
 
-        
+
 
         <!-- Left and right controls -->
         <a class="left carousel-control" href="#myCarousel" data-slide="prev">
