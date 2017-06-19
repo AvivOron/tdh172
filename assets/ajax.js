@@ -7,11 +7,12 @@
         $.ajax({
           type: "POST",
           url: "./php/getpoem.php",
-          data:{ poemID: poem_id, dest1: "originalText", dest2: "braileText" },
+          data:{ poemID: poem_id, dest1: "originalText", dest2: "braileText", dest3: "teiText" },
           success: function(data){
             var a = "<a href='javascript:printBraileText(\"braileText\");'>הדפסה</a> \\ <a href='javascript:makeTextFile(\"" +
             document.getElementById("poemName").innerHTML + "\",\"originalText\");'>שמירת טקסט עברי לקובץ</a> \\  <a href='javascript:makeBraileFile(\"" +
-            document.getElementById("poemName").innerHTML + "\",\"braileText\");'>שמירת טקסט ברייל לקובץ</a><br><br>";
+            document.getElementById("poemName").innerHTML + "\",\"braileText\");'>שמירת טקסט ברייל לקובץ</a> \\  <a href='javascript:makeTEIFile(\"" +
+            document.getElementById("poemName").innerHTML + "\",\"teiText\");'>הורדת TEI</a><br><br>";
             document.getElementById("actions").innerHTML= a;
             document.getElementById("poem").innerHTML = data;
             document.getElementById("left_spinner").style.visibility = "hidden";
@@ -31,11 +32,12 @@
         $.ajax({
           type: "POST",
           url: "./php/getpoem.php",
-          data:{ poemID: poem_id, dest1: "originalTextTab2", dest2: "braileTextTab2" },
+          data:{ poemID: poem_id, dest1: "originalTextTab2", dest2: "braileTextTab2", dest3: "teiTextTab2" },
           success: function(data){
             var a = "<a href='javascript:printBraileText(\"braileTextTab2\");'>הדפסה</a> \\ <a href='javascript:makeTextFile(\"" +
             document.getElementById("poemNameTab2").innerHTML + "\",\"originalTextTab2\");'>שמירת טקסט עברי לקובץ</a> \\  <a href='javascript:makeBraileFile(\"" +
-            document.getElementById("poemNameTab2").innerHTML + "\",\"braileTextTab2\");'>שמירת טקסט ברייל לקובץ</a><br><br>";
+            document.getElementById("poemNameTab2").innerHTML + "\",\"braileTextTab2\");'>שמירת טקסט ברייל לקובץ</a> \\  <a href='javascript:makeTEIFile(\"" +
+            document.getElementById("poemNameTab2").innerHTML + "\",\"teiTextTab2\");'>הורדת TEI</a><br><br>";
             document.getElementById("actions-tab2").innerHTML = a;
             document.getElementById("poem-tab2").innerHTML = data;
             document.getElementById("left_spinner_tab2").style.visibility = "hidden";
@@ -412,6 +414,31 @@
       window.URL.revokeObjectURL(url);
     }, 0);
   }
+
+  function makeTEIFile(poemName, textSource) {
+
+    data = new Blob([
+  new Uint8Array([0xEF, 0xBB, 0xBF]), // UTF-8 BOM
+  document.getElementById(textSource).innerHTML.replace(/\n/g, "\r\n")
+
+  ],
+  { type: "text/plain;charset=utf-8" });
+
+
+
+    var a = document.createElement("a"),
+    url = URL.createObjectURL(data);
+    a.href = url;
+    a.download = poemName + "-tei.xml";
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function() {
+      document.body.removeChild(a);
+      window.URL.revokeObjectURL(url);
+    }, 0);
+  }
+
+  
 
   function downloadList(src) {
 

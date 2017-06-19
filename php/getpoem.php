@@ -21,7 +21,8 @@ if ($conn->connect_error) {
 $poemID = $_POST["poemID"];
 $dest1 = $_POST["dest1"];
 $dest2 = $_POST["dest2"];
-$sql = "SELECT p1.name as name, p1.original_data as original_data, p1.translated_data as translated_data, p2.name as poet_name, p2.wikipedia_url as url FROM poems p1 join poets p2 on p1.poet_id = p2.id where p1.id = '$poemID'";
+$dest3 = $_POST["dest3"];
+$sql = "SELECT p1.name as name, p1.original_data as original_data, p1.translated_data as translated_data, p1.tei as tei, p2.name as poet_name, p2.wikipedia_url as url FROM poems p1 join poets p2 on p1.poet_id = p2.id where p1.id = '$poemID'";
 
 $result = $conn->query($sql);
 
@@ -44,6 +45,7 @@ if ($result->num_rows > 0) {
     echo "<td style='vertical-align:top;'><div id='$dest1'>" . $row['original_data'] . "</div></td>";
     echo "<td style='padding-right:10px;'><div id='$dest2' style='text-align:left;'>" . $row['translated_data'] . "</div></td>";
     echo "</tr>" ;
+    echo "<tr style='visibility: collapse;'><td><div id='$dest3' style='max-width:0px;max-height:0px'>" . $row['tei'] . "</div></td><tr>";
     }
 
 

@@ -144,7 +144,7 @@ html, body{
 
 .scrollable{
 overflow-y: auto;
-height: 350px;
+max-height: 350px;
 width: 350px;
 }
 
