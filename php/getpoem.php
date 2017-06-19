@@ -45,7 +45,7 @@ if ($result->num_rows > 0) {
     echo "<td style='vertical-align:top;'><div id='$dest1'>" . $row['original_data'] . "</div></td>";
     echo "<td style='padding-right:10px;'><div id='$dest2' style='text-align:left;'>" . $row['translated_data'] . "</div></td>";
     echo "</tr>" ;
-    echo "<tr style='visibility: collapse;'><td><div id='$dest3' style='max-width:0px;max-height:0px'>" . $row['tei'] . "</div></td><tr>";
+    echo "<tr style='display: none;'><td><div id='$dest3' style='max-width:0px;max-height:0px'>" . $row['tei'] . "</div></td><tr>";
     }
 
 
