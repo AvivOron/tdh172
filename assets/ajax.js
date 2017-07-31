@@ -419,7 +419,7 @@
 
     data = new Blob([
   new Uint8Array([0xEF, 0xBB, 0xBF]), // UTF-8 BOM
-  document.getElementById(textSource).innerHTML.replace(/\n/g, "\r\n")
+  document.getElementById(textSource).innerHTML.replace(/\n/g, "\r\n").replace(/&lt;/g,"<").replace(/&gt;/g,">")
 
   ],
   { type: "text/plain;charset=utf-8" });

@@ -22,8 +22,8 @@
   background-repeat:   no-repeat;
   background-position: center center;">
   <div class="container text-center">
-    <h1>שירה עברית בברייל</h1>
-    <p>מייקי נגלר, איילת קלדרון ואביב אורון</p>
+    <h1>שירה עברית בברייל <font size=5>v2.0</font></h1>
+    <p>אביב אורון וגלעד וינטרפלד</p>
   </div>
 </div>
 
@@ -36,9 +36,11 @@
         <li class="active" id="nabThumb"><a data-toggle="tab" href="#home">דף הבית</a></li>
         <li id="nabThumb"><a data-toggle="tab" href="#menu1">חיפוש עפ"י משורר</a></li>
         <li id="nabThumb"><a data-toggle="tab" href="#menu2">חיפוש עפ"י שם השיר</a></li>
+        <li id="nabThumb"><a data-toggle="tab" href="#menu3">שירה גיאוגרפית</a></li>
         <li id="nabThumb"><a data-toggle="tab" href="#menu4">הכר את המשורר</a></li>
         <li id="nabThumb"><a id="tl" data-toggle="tab" href="#menu5">נתוני המאגר</a></li>
         <li id="nabThumb"><a data-toggle="tab" href="#menu6">תהליך הפיתוח</a></li>
+
 
 
 
@@ -51,10 +53,13 @@
 
 <div class="tab-content">
   <div dir="rtl" align="right" id="home" class="tab-pane fade in active" >
-    כחלק מהקורס בו אנו לוקחים חלק, "מדעי הרוח הדיגיטליים" באוניברסיטת בן-גוריון בנגב,<br>
+    כחלק מהקורס בו אנו לוקחים חלק, <a href="https://www.cs.bgu.ac.il/~dhcs172/Main">"מדעי הרוח הדיגיטליים"</a> בהנחיית <a href="https://www.cs.bgu.ac.il/~yaeln/" target="_blank">ד"ר יעל נצר</a> באוניברסיטת בן-גוריון בנגב,<br>
     בחרנו לממש פרוייקט אשר ינגיש לקהילת העיוורים וכבדי הראייה בישראל את מאגר<br>
     השירה העברית של פרוייקט <a href="http://benyehuda.org/">בן-יהודה</a> בתרגום לכתב ברייל.<br><br>
-    <b>אנו מקווים כי בפרוייקט זה, הקלנו במידה מסויימת על האתגרים היום יומיים של קהילת העיוורים וכבדי הראייה בישראל.<br><br><br></b>
+    לאחר שלבי האיחזור, העיבוד והתרגום, מצאנו לנכון להעשיר את ה-Metadata במאגר ולהוסיף תצוגות שונות של המידע המועשר באתרנו,<br> במטרה להגיע להבנה מעמיקה יותר אודות השירה העברית, מקורותיה ומשורריה עצמם.<br><br>
+    במהלך העבודה על הפרוייקט יישמנו את הטכניקות השונות והשתמשנו בכלים המגוונים שלמדנו לאורך הסמסטר בקורס.<br>
+    כמו כן, נאלצנו להתמודד עם אתגרים רבים וללמוד טכנולוגיות וכלים נוספים על מנת להגיע לתוצר הסופי - <br>החל מכתיבת ועיצוב דפי Web וכלה בהרמת סביבת Deployment לאחסון האתר.<br><br>
+    <b>אנו מקווים כי בפרוייקט זה, הקלנו במידה מסויימת על האתגרים היום יומיים של קהילת העיוורים וכבדי הראייה בישראל.<br><br></b>
     <small>תודה לפרוייקט <a href="http://benyehuda.org/">בן יהודה</a> אשר המיר את התכנים לפורמט דיגיטלי ואיפשר לנו לממש פרוייקט זה.</small>
   </div>
 
@@ -252,6 +257,9 @@
           <li>
             <b>שירים</b><br>כמות השירים אשר מונה המאגר הינה <span id="numOfPoems"></span> שירים.<br>
             להורדת רשימת שמות כל השירים <a href="javascript:downloadList('poemsListt');">לחץ כאן</a>.
+          </li><br>
+          <li>
+            <b>TEI</b><br>להורדת כל קבצי ה-TEI במערכת <a href="https://drive.google.com/open?id=0B7MWkrdenma7c0RTM3RzT2M1a1E">לחץ כאן</a>.
           </li>
         </ul>
         </td>
@@ -285,7 +293,7 @@
             <b> פיתוח ממשק Web</b>
             <ol class="ordlist">
               <li class="linum">בניית אתר מבוסס <b>PHP ו-Javascript</b> השולף מידע ממאגר הנתונים שבנינו ומציג אותו בצורה נוחה.</li>
-              <li class="linum">ביצוע תהליך Deployment לשירות <b>ElasinBeanstalk</b> ב-<b>Amazon AWS</b>.</li>
+              <li class="linum">ביצוע תהליך Deployment לשירות <b>ElasticBeanstalk</b> ב-<b>Amazon AWS</b>.</li>
             </ol>
           </li>
           <li class="linum">
@@ -295,6 +303,23 @@
               <li class="linum">לאחר מציאת הדפים הרלוונטיים (בדיקה אנושית), שליפת שנות לידה ופטירה ותקציר חייו של המשורר ושמירת כל הערכים לטבלת המשוררים במסד הנתונים.</li>
               <li class="linum">שליפת שנות לידה ופטירה משופרת באמצעות <b>OpenRefine</b> ומאגר <b>VIAF</b> ושמירת הנתונים למסד הנתונים.</li>
               <li class="linum">עבודה עם ספריית פייתון חיצונית להתממשקות מול Wikipedia.</li>
+              <li class="linum">כתיבת שאילתות SPARQL מעל Wikidata והצגת התוצאות בצורות ויזואליות שונות.</li>
+            </ol>
+          </li>
+          <li class="linum">
+            <b> יצירת קבצי TEI</b>
+            <ol class="ordlist">
+              <li class="linum">יצירת קבצי TEI עפ"י התקן המתאים עבור כל השירים במערכת.</li>
+              <li class="linum">מתן אפשרות הורדת TEI עבור שיר ספציפי.</li>
+              <li class="linum">מתן אפשרות הורדת כל קבצי ה-TEI במערכת.</li>
+            </ol>
+          </li>
+          <li class="linum">
+            <b> תיוג מקומות והצגה על מפה</b>
+            <ol class="ordlist">
+              <li class="linum">הרצת מתייג על כלל הטקסטים במאגר וחילוץ מקומות.</li>
+              <li class="linum">עבור מקומות שחולצו, איחזור קוארדינטות משירות API של Google Maps.</li>
+              <li class="linum">הצגת המיקומים שחולצו על מפת FusionTable.</li>
             </ol>
           </li>
 
@@ -303,16 +328,62 @@
       </div>
 
 
-
-      <div dir="rtl" align="right" style="margin-right:20px" id="menu4" class="tab-pane fade">
-      <div align="center">במסך זה ניתן לצפות בנתוני תהליך מיצוי המידע אודות המשוררים הממופים במאגר.<br>
-      ניתן לגלול ימינה\שמאלה לשאילתות נוספות.<br><br></div>
+      <div dir="rtl" align="right" style="margin-right:20px" id="menu3" class="tab-pane fade">
+      <div align="center">לאחר הרצת מתייג על תוכן השירים במאגר, החלטנו להציג את התוצאות על גבי מפת העולם בתצוגות שונות על מנת לתת מענה לשאלה:<br> מהם המקומות אשר משוררי השירה העברית חלמו וכתבו עליהם? התוצאות לא מפתיעות כלל...<br><br></div>
         <div id="myCarousel" class="carousel slide" data-ride="carousel" height="500" data-interval="false">
         <!-- Indicators -->
         <ol class="carousel-indicators">
           <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
           <li data-target="#myCarousel" data-slide-to="1"></li>
           <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+          <div class="item active" style="height:370px;text-align: center">
+            <b>מפת סיכות - איזכורי המקומות בשירה העברית על גבי מפת העולם<br></b  >
+            <iframe width="500" height="300" scrolling="no" frameborder="no" src="https://fusiontables.google.com/embedviz?q=select+col2+from+1BzQXe6YjndKg_XdO6skYN7iHiYaBSsZBClJpPKps&amp;viz=MAP&amp;h=false&amp;lat=30.773649520856686&amp;lng=23.043799020396364&amp;t=1&amp;z=3&amp;l=col2&amp;y=2&amp;tmplt=2&amp;hml=ONE_COL_LAT_LNG"></iframe><br>
+            <a href="https://fusiontables.google.com/embedviz?q=select+col2+from+1BzQXe6YjndKg_XdO6skYN7iHiYaBSsZBClJpPKps&viz=MAP&h=false&lat=33.08158957987265&lng=35.28003386412729&t=1&z=16&l=col2&y=2&tmplt=2&hml=ONE_COL_LAT_LNG" target="_blank">לינק</a> לצפייה במסך מלא
+          </div>
+
+            <div class="item" style="height:370px;text-align: center">
+            <b>מפת חום - בתצוגה זו ניתן לראות ריכוזי איזכורים של איזורים מסויימים בשירה העברית<br>כמו שניתן לראות בהתמקדות בישראל, ישנם ריכוזים גדולים של איזכורים באיזורי ירושלים ותל אביב.<br></b  >
+            <iframe width="500" height="300" scrolling="no" frameborder="no" src="https://fusiontables.google.com/embedviz?q=select+col2%2C+col1+from+1wA6P5j_iUPI6xqAjAFARN0XbOmlTv3LlH4PtMMJO+limit+1000&amp;viz=HEATMAP&amp;h=true&amp;lat=31.96492999701972&amp;lng=35.774206735240114&amp;t=1&amp;z=7&amp;l=col2&amp;y=2&amp;tmplt=2&amp;hmd=true&amp;hmg=%2366ff0000%2C%2393ff00ff%2C%23c1ff00ff%2C%23eeff00ff%2C%23f4e300ff%2C%23f4e300ff%2C%23f9c600ff%2C%23ffaa00ff%2C%23ff7100ff%2C%23ff3900ff%2C%23ff0000ff&amp;hmo=0.64&amp;hmr=36&amp;hmw=1&amp;hml=ONE_COL_LAT_LNG"></iframe><br>
+            <a href="https://fusiontables.google.com/embedviz?q=select+col2%2C+col1+from+1wA6P5j_iUPI6xqAjAFARN0XbOmlTv3LlH4PtMMJO+limit+1000&viz=HEATMAP&h=true&lat=29.384018194168224&lng=-13.689675711048949&t=1&z=2&l=col2&y=2&tmplt=2&hmd=true&hmg=%2366ff0000%2C%2393ff00ff%2C%23c1ff00ff%2C%23eeff00ff%2C%23f4e300ff%2C%23f4e300ff%2C%23f9c600ff%2C%23ffaa00ff%2C%23ff7100ff%2C%23ff3900ff%2C%23ff0000ff&hmo=1&hmr=16&hmw=1&hml=ONE_COL_LAT_LNG" target="_blank">לינק</a> לצפייה במסך מלא
+          </div>
+
+
+
+
+
+
+
+        </div>
+
+
+
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+
+      </div>
+
+      <div dir="rtl" align="right" style="margin-right:20px" id="menu4" class="tab-pane fade">
+      <div align="center">במסך זה ניתן לצפות בנתוני תהליך מיצוי המידע אודות המשוררים הממופים במאגר.<br>
+      ניתן לגלול ימינה\שמאלה לשאילתות נוספות.<br><br></div>
+        <div id="myCarousel2" class="carousel slide" data-ride="carousel" height="500" data-interval="false">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel2" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel2" data-slide-to="1"></li>
+          <li data-target="#myCarousel2" data-slide-to="2"></li>
         </ol>
 
         <!-- Wrapper for slides -->
@@ -337,11 +408,11 @@
 
 
         <!-- Left and right controls -->
-        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+        <a class="left carousel-control" href="#myCarousel2" data-slide="prev">
           <span class="glyphicon glyphicon-chevron-left"></span>
           <span class="sr-only">Previous</span>
         </a>
-        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+        <a class="right carousel-control" href="#myCarousel2" data-slide="next">
           <span class="glyphicon glyphicon-chevron-right"></span>
           <span class="sr-only">Next</span>
         </a>
